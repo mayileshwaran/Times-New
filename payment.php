@@ -1,8 +1,11 @@
 <?php
 session_start();
 if (!isset($_SESSION['user_id'])) {
+  echo "User ID: " . $_SESSION['user_id'];
     exit;
 }
+
+
 
 include('db.php');
 
@@ -84,8 +87,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (empty($errors)) {
-        $stmt = $conn->prepare("INSERT INTO orders (payment_method, fullname, address, city, pincode, phone) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $method, $name, $address, $city, $pin, $phone);
+       $user_id = $_SESSION['user_id'];
+
+$stmt = $conn->prepare("INSERT INTO orders 
+(user_id, product_id, quantity, price, payment_method, fullname, address, city, pincode, phone) 
+VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+$stmt->bind_param(
+    "iiidssssss",   // <-- Correct: no space
+    $user_id,       // i
+    $id,            // i (product_id)
+    $quantity,      // i
+    $total,         // d (price)
+    $method,        // s
+    $name,          // s
+    $address,       // s
+    $city,          // s
+    $pin,           // s (you can use s because pincode is stored as string)
+    $phone          // s (you can use s because phone may start with 0)
+);
+
+
+
         $stmt->execute();
         $stmt->close();
 
@@ -110,10 +132,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/prod.css">
+  <link rel="stylesheet" href="./css/nav.css">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
   <title>Payment</title>
 </head>
 <body>
+<div class="navbar">
+  <div class="logo"><img src="./image/Time’s new.png" alt=""></div>
+  <div class="center">Payment</div>
+  <div class="right">
+    <i class="fas fa-user-circle profile-icon"></i>
+    <div class="dropdown">
+      <a href="orders.php">Orders</a>
+      <a href="logout.php">Logout</a>
+    </div>
+  </div>
+</div>
+
 
 <div class="payment-container">
   <h2><?= htmlspecialchars($row['name']) ?> - Checkout</h2>
@@ -200,6 +237,32 @@ function showSection(method) {
   document.getElementById(method).style.display = 'block';
 }
 </script>
-
+   <footer>
+    <div class="foot-1">
+             <img src="./image/Time’s new.png" alt="" width="200px">
+             <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
+                , lifestyle, and innovation.</p>
+    </div>
+    <div class="foot-2">
+        <ul>
+             <li><a href="./index.php" >HOME</a></li>
+             <li><a href="./topbrands.php">TOP BRANDS</a></li>
+             <li><a href="./about.php">ABOUT</a></li>
+             <li> <a href="./contact.php">CONTACT</a></li></ul>
+    </div>
+    <div class="foot-3">
+        <h3>Coffee with us</h3>
+         <div class="fr"><i class="fa-solid fa-location-dot"></i> <p>Madurai</p></div>
+         <div class="fr"><a href="tel:+91 9876543210" target="_blank"><i class="fa-solid fa-phone"></i> <span> 9876543210</span>
+                    </a></div>
+    </div>
+   <div class="foot-4">
+    <h3>Get into touch</h3>
+    <div class="foot-4a">
+   <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"> <i class="fa-brands fa-square-instagram"></i></a>
+    <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+  <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
+  <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
+    </footer>
 </body>
 </html>

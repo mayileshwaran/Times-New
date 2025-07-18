@@ -32,12 +32,32 @@ $randoms = $conn->query("SELECT * FROM products WHERE id != $id ORDER BY RAND() 
 <!DOCTYPE html>
 <html>
 <head>
-  <title>View Product</title>
+  <title><?= htmlspecialchars($product['name']) ?> Time'snew view product</title>
   <link rel="stylesheet" href="./css/prod.css">
+  <link rel="stylesheet" href="./css/nav.css">
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    
+  </style>
 </head>
 <body>
+
+<!-- Navbar -->
+<div class="navbar">
+  <div class="logo"><img src="./image/Time’s new.png" alt=""></div>
+  <div class="center"><?= htmlspecialchars($product['name']) ?></div>
+  <div class="right">
+    <i class="fas fa-user-circle profile-icon"></i>
+    <div class="dropdown">
+      <a href="orders.php">Orders</a>
+      <a href="logout.php">Logout</a>
+    </div>
+  </div>
+</div>
 
 <div class="view-product-container">
   <div class="main-product">
@@ -77,7 +97,6 @@ $randoms = $conn->query("SELECT * FROM products WHERE id != $id ORDER BY RAND() 
     <?php while ($r = $randoms->fetch_assoc()): 
       $r_discount = $r['price'] - ($r['price'] * $r['discount_percent'] / 100);
     ?>
-      <!-- Wrap the whole card in <a> -->
       <a href="view_product.php?id=<?= $r['id'] ?>" class="related-card-link">
         <div class="related-card">
           <?php if (!empty($r['image_path'])): ?>
@@ -93,6 +112,32 @@ $randoms = $conn->query("SELECT * FROM products WHERE id != $id ORDER BY RAND() 
   </div>
 </div>
 
-
+   <footer>
+    <div class="foot-1">
+             <img src="./image/Time’s new.png" alt="" width="200px">
+             <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
+                , lifestyle, and innovation.</p>
+    </div>
+    <div class="foot-2">
+        <ul>
+             <li><a href="./index.php" >HOME</a></li>
+             <li><a href="./topbrands.php">TOP BRANDS</a></li>
+             <li><a href="./about.php">ABOUT</a></li>
+             <li> <a href="./contact.php">CONTACT</a></li></ul>
+    </div>
+    <div class="foot-3">
+        <h3>Coffee with us</h3>
+         <div class="fr"><i class="fa-solid fa-location-dot"></i> <p>Madurai</p></div>
+         <div class="fr"><a href="tel:+91 9876543210" target="_blank"><i class="fa-solid fa-phone"></i> <span> 9876543210</span>
+                    </a></div>
+    </div>
+   <div class="foot-4">
+    <h3>Get into touch</h3>
+    <div class="foot-4a">
+   <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"> <i class="fa-brands fa-square-instagram"></i></a>
+    <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+  <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
+  <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
+    </footer>
 </body>
 </html>

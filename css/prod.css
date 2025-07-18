@@ -263,13 +263,17 @@ label input[type="radio"] {
     .related-section{
       width: 100%;
     }
-    .related-card{
+    .no-image{
       width: 100%;
-      height: auto;
+    }
+    .related-card{
+      width: 200px;
+      height: 200px;
       }
       .related-card img{
         width: 100%;
-        height: auto;
+        height: 100px;
+        object-fit: cover;
       }
       .no-image{
         width: 100%;

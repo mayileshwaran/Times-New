@@ -65,6 +65,19 @@ html, body {
 .icon input{
     display: none;
 }
+.dropdown-menu{
+  position: absolute;
+  right: 0px;
+
+}
+.dropdown-menu a{
+  text-decoration: none;
+  text-decoration-color: none;
+  color: var(--text-black);
+}
+.user-profile i{
+  color: white;
+}
 nav{
   background-color: var(--primary-color);
   padding: 20px;

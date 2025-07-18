@@ -9,20 +9,58 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    <nav>
-        <div class="logo">
-<img src="./image/Time’s new.png" alt="">        </div>
 
-        <div class="icon">
-            <label for="nav"> <i class="fa-solid fa-bars"></i></label>
-            <input type="checkbox" id="nav">
-            <Ul>
-                <li class="active" ><a href="./index.php"class="active">HOME</a></li>
-                <li><a href="./about.php">ABOUT US</a></li>
-                <li><a href="./topbrands.php">TOP BRANDS</a></li>
-                
-                <li><a href="./contact.php">CONTACT</a></li>
-            </Ul></div></nav>
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
+<nav>
+  <div class="logo">
+    <img src="./image/Time’s new.png" alt="Logo">
+  </div>
+
+  <div class="icon">
+    <label for="nav"> <i class="fa-solid fa-bars"></i></label>
+    <input type="checkbox" id="nav">
+    <ul>
+      <li><a href="./index.php">HOME</a></li>
+      <li><a href="./about.php">ABOUT US</a></li>
+      <li><a href="./topbrands.php">TOP BRANDS</a></li>
+      <li><a href="./contact.php">CONTACT</a></li>
+    </ul>
+  </div>
+
+  <div class="user-profile">
+    <?php if (isset($_SESSION['user_id'])): ?>
+      <div class="dropdown">
+        <i class="fa-solid fa-user-circle dropdown-toggle" onclick="toggleDropdown()" style="cursor:pointer;"></i>
+        <div class="dropdown-menu" id="dropdownMenu" style="display: none; position: absolute; background: #fff; box-shadow: 0 0 5px rgba(0,0,0,0.2); padding: 10px;">
+          <a href="orders.php">Your Orders</a><br>
+          <a href="logout.php">Logout</a>
+        </div>
+      </div>
+      <script>
+        function toggleDropdown() {
+          const menu = document.getElementById('dropdownMenu');
+          menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropdown-toggle')) {
+            const dropdown = document.getElementById('dropdownMenu');
+            if (dropdown && dropdown.style.display === 'block') {
+              dropdown.style.display = 'none';
+            }
+          }
+        }
+      </script>
+    <?php else: ?>
+      <a href="login.php" class="login-btn">Login</a>
+    <?php endif; ?>
+  </div>
+</nav>
+
      
     <div class="banner"> 
       <div class="text">  
