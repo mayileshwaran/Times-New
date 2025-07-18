@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Time's New About us</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <link rel="stylesheet" href="./css/style.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
+</head>
+<body>
+     <nav>
+        <div class="logo">
+<img src="./image/Time’s new.png" alt="">        </div>
+
+        <div class="icon">
+            <label for="nav"> <i class="fa-solid fa-bars"></i></label>
+            <input type="checkbox" id="nav">
+            <Ul>
+                <li ><a href="./index.php">HOME</a></li>
+                <li class="active"><a href="./about.php" >ABOUT US</a></li>
+                <li><a href="./topbrands.php">TOP BRANDS</a></li>
+                
+                <li><a href="./contact.php">CONTACT</a></li>
+            </Ul></div></nav>
+            <div class="time">
+  <div class="times">
+    <div class="day" id="day">--</div>
+    <div class="clock" id="clock">--:--:--</div>
+    <div class="date" id="date">-- --- ----</div>
+  </div>
+</div>
+<h4>Our Story</h4>
+<div class="os">
+<div class="our-story">
+    <img src="./image/ourstory.jpg" alt="" class="our-s">
+    <div class="ours-cont">
+        <p>Founded in 1999, our company has proudly stood at the intersection of timeless craftsmanship and modern design. </p>
+
+<p>Over the years, we’ve continued to evolve — not just in style, but in purpose. </p>
+
+<p>Today, as we move forward with a legacy over two decades strong, our commitment remains the same: to deliver exceptional quality and enduring style.</p>
+    </div>
+</div></div>
+   <footer>
+    <div class="foot-1">
+             <img src="./image/Time’s new.png" alt="" width="200px">
+             <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
+                , lifestyle, and innovation.</p>
+    </div>
+    <div class="foot-2">
+        <ul>
+             <li><a href="./index.php" >HOME</a></li>
+             <li><a href="./topbrands.php">TOP BRANDS</a></li>
+             <li><a href="#">ABOUT</a></li>
+             <li> <a href="./contact.php">CONTACT</a></li></ul>
+    </div>
+    <div class="foot-3">
+        <h3>Coffee with us</h3>
+         <div class="fr"><i class="fa-solid fa-location-dot"></i> <p>Madurai</p></div>
+         <div class="fr"><a href="tel:+91 9876543210" target="_blank"><i class="fa-solid fa-phone"></i> <span> 9876543210</span>
+                    </a></div>
+    </div>
+   <div class="foot-4">
+    <h3>Get into touch</h3>
+    <div class="foot-4a">
+   <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"> <i class="fa-brands fa-square-instagram"></i></a>
+    <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+  <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
+  <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
+    </footer>
+  <script src="./js/about.js"></script>
+</body>
+</html>

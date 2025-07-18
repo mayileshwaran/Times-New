@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login & Signup</title>
+  <link rel="stylesheet" href="./css/log.css" />
+    <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
+</head>
+<body>
+  <div class="container" id="container">
+    <!-- Sign Up -->
+    <div class="form-container sign-up-container">
+      <form method="POST" action="auth.php">
+        <h2>Create Account</h2>
+        <input type="text" name="signup_name" placeholder="Name" required />
+        <input type="email" name="signup_email" placeholder="Email" required />
+        <input type="password" name="signup_password" placeholder="Password" required />
+        <button name="signup_btn" type="submit">Sign Up</button>
+      </form>
+    </div>
+
+    <!-- Login -->
+    <div class="form-container sign-in-container">
+      <form method="POST" action="auth.php">
+        <h2>Login</h2>
+        <input type="email" name="login_email" placeholder="Email" required />
+        <input type="password" name="login_password" placeholder="Password" required />
+        <button name="login_btn" type="submit">Login</button>
+      </form>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay-container">
+      <div class="overlay">
+        <div class="overlay-panel overlay-left">
+          <h2>Welcome Back!</h2>
+          <p>To stay connected, please login</p>
+          <button class="pribut" id="signIn">Login</button>
+        </div>
+        <div class="overlay-panel overlay-right">
+          <h2>Hello!</h2>
+          <p>New here? Click below to sign up</p>
+          <button class="pribut" id="signUp">Sign Up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+ <script src="./js/login.js"></script>
+</body>
+</html>
