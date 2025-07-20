@@ -4,8 +4,7 @@ if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
 }
-?>
-<?php
+
 include('db.php');
 
 if (!isset($_GET['id'])) {
@@ -32,17 +31,13 @@ $randoms = $conn->query("SELECT * FROM products WHERE id != $id ORDER BY RAND() 
 <!DOCTYPE html>
 <html>
 <head>
-  <title><?= htmlspecialchars($product['name']) ?> Time'snew view product</title>
+  <title><?= htmlspecialchars($product['name']) ?> - Time's New View Product</title>
   <link rel="stylesheet" href="./css/prod.css">
   <link rel="stylesheet" href="./css/nav.css">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <style>
-    
-  </style>
 </head>
 <body>
 
@@ -84,7 +79,9 @@ $randoms = $conn->query("SELECT * FROM products WHERE id != $id ORDER BY RAND() 
     <form action="payment.php" method="get">
       <input type="hidden" name="id" value="<?= $product['id'] ?>">
       <label>Quantity:</label>
-      <input type="number" name="quantity" value="1" min="1" required> <br><br>
+      <input type="number" name="quantity" value="1" min="1" max="<?= $product['quantity'] ?>" required>
+      <p style="font-size: 14px; color: gray;">Only <?= $product['quantity'] ?> in stock</p>
+      <br>
       <button type="submit" class="btn">Buy Now</button>
     </form>
   </div>
@@ -106,38 +103,55 @@ $randoms = $conn->query("SELECT * FROM products WHERE id != $id ORDER BY RAND() 
           <?php endif; ?>
           <h4><?= htmlspecialchars($r['name']) ?></h4>
           <p><strong>₹<?= round($r_discount, 2) ?></strong></p>
+          <div class="btn">view more</div>
         </div>
       </a>
     <?php endwhile; ?>
   </div>
 </div>
 
-   <footer>
-    <div class="foot-1">
-             <img src="./image/Time’s new.png" alt="" width="200px">
-             <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
-                , lifestyle, and innovation.</p>
-    </div>
-    <div class="foot-2">
-        <ul>
-             <li><a href="./index.php" >HOME</a></li>
-             <li><a href="./topbrands.php">TOP BRANDS</a></li>
-             <li><a href="./about.php">ABOUT</a></li>
-             <li> <a href="./contact.php">CONTACT</a></li></ul>
-    </div>
-    <div class="foot-3">
-        <h3>Coffee with us</h3>
-         <div class="fr"><i class="fa-solid fa-location-dot"></i> <p>Madurai</p></div>
-         <div class="fr"><a href="tel:+91 9876543210" target="_blank"><i class="fa-solid fa-phone"></i> <span> 9876543210</span>
-                    </a></div>
-    </div>
-   <div class="foot-4">
+<!-- Footer -->
+<footer>
+  <div class="foot-1">
+    <img src="./image/Time’s new.png" alt="" width="200px">
+    <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology, lifestyle, and innovation.</p>
+  </div>
+  <div class="foot-2">
+    <ul>
+      <li><a href="./index.php">HOME</a></li>
+      <li><a href="./topbrands.php">TOP BRANDS</a></li>
+      <li><a href="./about.php">ABOUT</a></li>
+      <li><a href="./contact.php">CONTACT</a></li>
+    </ul>
+  </div>
+  <div class="foot-3">
+    <h3>Coffee with us</h3>
+    <div class="fr"><i class="fa-solid fa-location-dot"></i> <p>Madurai</p></div>
+    <div class="fr"><a href="tel:+91 9876543210" target="_blank"><i class="fa-solid fa-phone"></i> <span>9876543210</span></a></div>
+  </div>
+  <div class="foot-4">
     <h3>Get into touch</h3>
     <div class="foot-4a">
-   <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"> <i class="fa-brands fa-square-instagram"></i></a>
-    <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
-  <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
-  <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
-    </footer>
+      <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+      <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+      <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
+      <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+<script>
+  const quantityInput = document.querySelector('input[name="quantity"]');
+  const maxQuantity = parseInt(quantityInput.max);
+
+  quantityInput.addEventListener('input', () => {
+    if (quantityInput.value > maxQuantity) {
+      alert(`Only ${maxQuantity} item(s) in stock.`);
+      quantityInput.value = maxQuantity;
+    } else if (quantityInput.value < 1) {
+      quantityInput.value = 1;
+    }
+  });
+</script>
+
 </body>
 </html>

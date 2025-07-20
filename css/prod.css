@@ -30,6 +30,13 @@ body{
     align-items: center;
     justify-content: center;
 }
+.product-details{
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: start;
+  justify-content: start;
+}
 .view-product-container{
  width: 90%; 
 align-items: center;

@@ -59,7 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if ($method == 'upi') {
         $upi_id = trim($_POST['upi_id'] ?? '');
         if (!preg_match("/^[\w.-]+@[\w.-]+$/", $upi_id)) {
-            $errors['upi_id'] = "Enter a valid UPI ID (e.g., name@upi).";
+            $errors['upi_id'] = "Enter a valid UPI ID (e.g., name@bankname).";
         }
     }
 

@@ -88,13 +88,14 @@ if ($result->num_rows > 0) {
         echo "<h3>" . htmlspecialchars($row['name']) . "</h3><hr>";
         echo "<p>Type: " . htmlspecialchars($row['type']) . "</p>";
         echo "<p>Brand: " . htmlspecialchars($row['brand']) . "</p>";
-
+        
         // Price
         if ($row['discount_percent'] > 0) {
-            echo "<p class='price'><s>₹" . $row['price'] . "</s> ₹" . number_format($discounted, 2) . "</p>";
+          echo "<p class='price'><s>₹" . $row['price'] . "</s> ₹" . number_format($discounted, 2) . "</p>";
         } else {
-            echo "<p class='price'>₹" . $row['price'] . "</p>";
+          echo "<p class='price'>₹" . $row['price'] . "</p>";
         }
+        echo"<div class='btn'width='80%'>Buy Now</div>";
 
         // Admin Buttons inside the card
         if (isAdmin()) {
@@ -102,6 +103,7 @@ if ($result->num_rows > 0) {
             echo "<button class='btn' onclick=\"event.stopPropagation(); window.location='update_product.php?id={$row['id']}'\">Edit</button>";
             echo "<button class='btndelete' onclick=\"event.stopPropagation(); confirmDelete('delete_product.php?id={$row['id']}')\">Delete</button>";
             echo "</div>";
+            
         }
 
         echo "</div>"; // End of .product-card

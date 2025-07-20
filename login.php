@@ -21,14 +21,20 @@
     </div>
 
     <!-- Login -->
-    <div class="form-container sign-in-container">
-      <form method="POST" action="auth.php">
-        <h2>Login</h2>
-        <input type="email" name="login_email" placeholder="Email" required />
-        <input type="password" name="login_password" placeholder="Password" required />
-        <button name="login_btn" type="submit">Login</button>
-      </form>
-    </div>
+   <div class="form-container sign-in-container">
+  <form id="loginForm" method="POST" action="auth.php" onsubmit="return validateLoginForm()">
+    <h2>Login</h2>
+
+    <input type="email" id="login_email" name="login_email" placeholder="Email" />
+    <div id="emailError" class="error-message"></div>
+
+    <input type="password" id="login_password" name="login_password" placeholder="Password" />
+    <div id="passwordError" class="error-message"></div>
+
+    <button name="login_btn" type="submit">Login</button>
+  </form>
+</div>
+
 
     <!-- Overlay -->
     <div class="overlay-container">
