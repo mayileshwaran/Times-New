@@ -100,7 +100,7 @@ img{
 }
 
 .btn, .btn-small {
-  background: #007bff;
+  background: var(--primary-color);
   color: #fff;
   border: none;
   padding: 8px 12px;
@@ -215,7 +215,7 @@ label input[type="radio"] {
   display: block;
   width: 100%;
   padding: 12px;
-  background: #1e88e5;
+  background: var(--primary-color);
   color: #fff;
   font-weight: bold;
   font-size: 16px;
@@ -225,9 +225,7 @@ label input[type="radio"] {
   transition: 0.3s ease;
 }
 
-.btn:hover {
-  background: #1565c0;
-}
+
   .error { 
     color: red;
      font-size: 14px; 
@@ -275,7 +273,7 @@ label input[type="radio"] {
     }
     .related-card{
       width: 200px;
-      height: 200px;
+      height: auto;
       }
       .related-card img{
         width: 100%;
