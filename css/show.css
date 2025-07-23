@@ -33,6 +33,7 @@ body{
 }
 .product-card p {
     color:var(--text-black);
+    margin: 5px;
 }
 .product-card h3{
     color: var(--text-black);
@@ -168,6 +169,16 @@ display: flex;
     object-fit: cover;
     border-radius: 8px;
     display: block;
+}
+.btn-buy{
+  width: 50%;
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-white);
+  background-color: var(--primary-color);
 }
 .btn-add{
       width: 100%;

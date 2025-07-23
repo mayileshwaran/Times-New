@@ -79,6 +79,14 @@ html, body {
   color: white;
   font-size: 22px;
 }
+.login-btn{
+  background-color: white;
+  padding: 10px;
+  text-decoration: none;
+  text-decoration-color: none;
+  color: var(--primary-color);
+  border: 1px solid var(--text-white);
+}
 nav{
   background-color: var(--primary-color);
   padding: 20px;

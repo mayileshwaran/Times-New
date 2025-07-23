@@ -13,7 +13,7 @@ if (!isset($_GET['id'])) {
 }
 
 $id = (int) $_GET['id'];
-$res = $conn->query("SELECT * FROM products WHERE id = $id");
+$res = $conn->query("SELECT * FROM products WHERE id = $id AND status = 'active'");
 $product = $res->fetch_assoc();
 
 if (!$product) {
@@ -25,7 +25,7 @@ $discounted = $product['price'] - ($product['price'] * $product['discount_percen
 $final_price = round($discounted, 2);
 
 // Fetch 4 random other products
-$randoms = $conn->query("SELECT * FROM products WHERE id != $id ORDER BY RAND() LIMIT 4");
+$randoms = $conn->query("SELECT * FROM products WHERE id != $id AND status = 'active' ORDER BY RAND() LIMIT 4");
 ?>
 
 <!DOCTYPE html>
@@ -69,7 +69,8 @@ $randoms = $conn->query("SELECT * FROM products WHERE id != $id ORDER BY RAND() 
     <p><strong>Type:</strong> <?= $product['type'] ?> Watch</p>
 
     <?php if ($product['discount_percent'] > 0): ?>
-      <p><s>₹<?= $product['price'] ?></s><br> - <?= $product['discount_percent'] ?>% off</p>
+      <p><s>₹<?= $product['price'] ?></s><br></p>
+      <p> - <?= $product['discount_percent'] ?>% off</p>
       <p><strong>Discounted Price: ₹<?= $final_price ?></strong></p>
     <?php else: ?>
       <p><strong>Price: ₹<?= $product['price'] ?></strong></p>
@@ -88,7 +89,7 @@ $randoms = $conn->query("SELECT * FROM products WHERE id != $id ORDER BY RAND() 
 </div>
 
 <!-- Related Products -->
-<h3>Related Products</h3>
+<h3>Recently added Products</h3>
 <div class="related-section">
   <div class="related-grid">
     <?php while ($r = $randoms->fetch_assoc()): 

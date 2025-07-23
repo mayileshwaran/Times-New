@@ -66,8 +66,9 @@ if (isset($_GET['type'])) {
     $brand = $_GET['brand'];
     $filter = "WHERE brand = '$brand'";
 }
+$statusFilter = "status = 'active'";
+$sql = "SELECT * FROM products " . ($filter ? "$filter AND $statusFilter" : "WHERE $statusFilter");
 
-$sql = "SELECT * FROM products $filter";
 $result = $conn->query($sql);
 
 
@@ -95,7 +96,7 @@ if ($result->num_rows > 0) {
         } else {
           echo "<p class='price'>₹" . $row['price'] . "</p>";
         }
-        echo"<div class='btn'width='80%'>Buy Now</div>";
+        echo"<div class='btn-buy'>Buy Now</div>";
 
         // Admin Buttons inside the card
         if (isAdmin()) {

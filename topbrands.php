@@ -88,7 +88,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
             </div>
             <a href="show.php?brand=rolex">
-            <div class="pri-but open-popup">Explore Rolex watch</div></a>
+            <div class="pri-but">Explore Rolex watch</div></a>
         </div>
     </div>
  <div class="cont">
@@ -118,7 +118,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
             </div>
       <a href="show.php?brand=omega">
-            <div class="pri-but open-popup">Explore Omega watch</div></a>
+            <div class="pri-but">Explore Omega watch</div></a>
         </div>
     </div>
     <div class="cont">
@@ -148,7 +148,7 @@ if (session_status() === PHP_SESSION_NONE) {
             </div>
             </div>
         <a href="show.php?brand=cartier">
-            <div class="pri-but open-popup">Explore Cartier watch</div></a>
+            <div class="pri-but">Explore Cartier watch</div></a>
         </div>
     </div>
       <div class="cont">
@@ -179,7 +179,7 @@ if (session_status() === PHP_SESSION_NONE) {
             
             </div>
             <a href="show.php?brand=citizen">
-            <div class="pri-but open-popup">Explore Citizen watch</div></a>
+            <div class="pri-but">Explore Citizen watch</div></a>
         </div>
     </div>
 </div>

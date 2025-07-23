@@ -80,6 +80,7 @@ footer{
   align-items: start;
   flex-wrap: wrap;
 }
+
 .foot-1,.foot-2,.foot-3,.foot-4{
   width: 20%;
   padding: 10px 20px 10px 20px;
@@ -148,13 +149,8 @@ footer{
   text-decoration-color: none;
   color: var(--text-white);
 }
-    @media (max-width: 768px) {
-        .navbar{
-            padding: 12px 10px;
-        }
-  img{
-    width: 120px;
-  }
+ @media (max-width: 900px) {
+
    footer{
     flex-direction: column;
     padding: 20px;
@@ -164,5 +160,13 @@ footer{
     width: 100%;
     align-items: flex-start;
     justify-content: flex-start;
+  }
+ }
+    @media (max-width: 768px) {
+        .navbar{
+            padding: 12px 10px;
+        }
+  img{
+    width: 120px;
   }
 }

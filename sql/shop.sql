@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 18, 2025 at 05:18 PM
+-- Generation Time: Jul 23, 2025 at 07:57 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -79,7 +79,8 @@ INSERT INTO `orders` (`id`, `product_id`, `quantity`, `price`, `created_at`, `pa
 (30, NULL, 1, NULL, '2025-07-18 19:53:04', 'Cash on Delivery', 'Mayileshwaran', '1-8-17/13, West kottai cross Street, Paravai', 'Madurai', '625402', '9677929212', 2),
 (31, NULL, 1, NULL, '2025-07-18 19:54:52', 'Cash on Delivery', 'Mayileshwaran', '1-8-17/13, West kottai cross Street, Paravai', 'Madurai', '625402', '9677929212', 2),
 (32, NULL, 1, NULL, '2025-07-18 20:10:18', 'upi', 'Mayileshwaran', '1-8-17/13, West kottai cross Street, Paravai', 'Madurai', '625402', '9677929212', 2),
-(33, 0, 1, 5280.00, '2025-07-18 20:21:25', 'Cash on Delivery', 'Mayileshwaran', '1-8-17/13, West kottai cross Street, Paravai', 'Madurai', '625402', '9677929212', 2);
+(33, 0, 1, 5280.00, '2025-07-18 20:21:25', 'Cash on Delivery', 'Mayileshwaran', '1-8-17/13, West kottai cross Street, Paravai', 'Madurai', '625402', '9677929212', 2),
+(34, 0, 1, 5280.00, '2025-07-23 10:58:17', 'Cash on Delivery', 'Mayileshwaran', '1-8-17/13, West kottai cross Street, Paravai', 'Madurai', '625402', '9677929212', 1);
 
 -- --------------------------------------------------------
 
@@ -95,18 +96,19 @@ CREATE TABLE `products` (
   `type` varchar(100) DEFAULT NULL,
   `brand` varchar(100) DEFAULT NULL,
   `image_path` varchar(255) DEFAULT NULL,
-  `quantity` int(11) NOT NULL DEFAULT 0
+  `quantity` int(11) NOT NULL DEFAULT 0,
+  `status` enum('active','inactive') NOT NULL DEFAULT 'active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `price`, `discount_percent`, `type`, `brand`, `image_path`, `quantity`) VALUES
-(0, 'Test', 5500.00, 4, 'kids', 'omega', '6874b8ce3f636.jpg', 40),
-(1, 'Test', 5500.00, 5, 'mens', 'rolex', '6874aef3e89d6.png', 43),
-(17, 'brishless watch', 777.00, 1, 'womens', 'rolex', NULL, 43),
-(18, 'Test', 7000.00, 0, 'kids', 'rolex', '687a10065da5a.png', 54);
+INSERT INTO `products` (`id`, `name`, `price`, `discount_percent`, `type`, `brand`, `image_path`, `quantity`, `status`) VALUES
+(0, 'Test', 5500.00, 4, 'kids', 'omega', '6874b8ce3f636.jpg', 39, 'active'),
+(1, 'Test', 5500.00, 5, 'mens', 'rolex', '6874aef3e89d6.png', 43, 'active'),
+(17, 'brishless watch', 777.00, 1, 'womens', 'rolex', NULL, 43, 'active'),
+(18, 'Test', 7000.00, 0, 'kids', 'rolex', '687a10065da5a.png', 54, 'active');
 
 -- --------------------------------------------------------
 
@@ -165,7 +167,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `products`
