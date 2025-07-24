@@ -67,14 +67,45 @@ html, body {
 }
 .dropdown-menu{
   position: absolute;
-  right: 0px;
-
+  top: 50px;
+  right: 20px;
 }
 .dropdown-menu a{
   text-decoration: none;
   text-decoration-color: none;
   color: var(--text-black);
+
 }
+.btn{
+  background-color: var(--primary-color);
+  color: var(--text-white);
+  padding: 10px;
+  border: none;
+}
+.dropdown-menu {
+      display: none;
+      position: absolute;
+      right: 0;
+      background-color: #fff;
+      color: #000;
+      box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
+      border-radius: 6px;
+      margin-top: 10px;
+      min-width: 120px;
+      z-index: 999;
+    }
+    .dropdown-menu a {
+      display: block;
+      padding: 10px;
+      text-decoration: none;
+      color: #000;
+    }
+    .dropdown-menu a:hover {
+      background-color: #eee;
+    }
+    .navbar .right:hover .dropdown-menu {
+      display: block;
+    }
 .user-profile i{
   color: white;
   font-size: 22px;
@@ -380,8 +411,18 @@ form textarea{
   padding: 10px;
   border-radius: 5px;
   width: 90%;
-  height:60px;
+  height:80px;
   border: 1px solid black;
+}
+.active a{
+  text-decoration-line: underline 1px var(--text-black);
+}
+.dropdown{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }
 .right-form{
   width: 50%;

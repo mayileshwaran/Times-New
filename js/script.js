@@ -53,13 +53,12 @@ $(document).ready(function(){
         currIndex=(currIndex+1) % carouselLength;
         showItem(currIndex);
     }
-    setInterval(autoplay,5000)
+    setInterval(autoplay,10000)
 
 })
 $(document).ready(function () {
-  // Set future date: 70 days 12h 35m 60s from now
-  const now = new Date();
-  const future = new Date(now.getTime() + (5 * 24 * 60 * 60 + 5 * 3600 + 35 * 60 + 60) * 1000);
+  // Set a specific future date (e.g., 2025-12-31 23:59:59)
+  const future = new Date("2025-08-31T23:59:59");
 
   function updateCountdown() {
     const currentTime = new Date().getTime();
@@ -84,6 +83,7 @@ $(document).ready(function () {
   updateCountdown();
   setInterval(updateCountdown, 1000);
 });
+
     $(document).ready(function(){
             $('.open-popup').click(function(){
                 $('#popup').fadeIn();
@@ -99,52 +99,36 @@ $(document).ready(function () {
         });   
 
 //Form validation
-document.getElementById('submitBtn').addEventListener('click', function () {
-    const name = document.getElementById('name').value.trim();
-    const email = document.getElementById('email').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const message = document.getElementById('message').value.trim();
-    const formMessage = document.getElementById('formMessage');
+document.getElementById("contactForm").addEventListener("submit", function (e) {
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const message = document.getElementById("message").value.trim();
 
-    const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-    const phonePattern = /^[6-9][0-9]{9}$/;
-    const namePattern = /^[A-Za-z\s]+$/;
-    const messagePattern = /^[A-Za-z0-9\s.,!?]+$/;
+  const emailRegex = /^[a-zA-Z][\w.-]*@[a-zA-Z]+\.[a-zA-Z]{2,}$/;
+  const phoneRegex = /^[6-9]\d{9}$/;
 
-    if (name === '') {
-        formMessage.style.color = 'red';
-        formMessage.textContent = 'Please enter your name.';
-    } else if (!namePattern.test(name)) {
-        formMessage.style.color = 'red';
-        formMessage.textContent = 'Name should only contain letters and spaces.';
-    } else if (email === '') {
-        formMessage.style.color = 'red';
-        formMessage.textContent = 'Please enter your email.';
-    } else if (!emailPattern.test(email)) {
-        formMessage.style.color = 'red';
-        formMessage.textContent = 'Please enter a valid email address.';
-    } else if (phone === '') {
-        formMessage.style.color = 'red';
-        formMessage.textContent = 'Please enter your phone number.';
-    } else if (!phonePattern.test(phone)) {
-        formMessage.style.color = 'red';
-        formMessage.textContent = 'Phone number must start with 9, 8, 7, or 6 and be 10 digits.';
-    } else if (message === '') {
-        formMessage.style.color = 'red';
-        formMessage.textContent = 'Please enter your message.';
-    } else if (!messagePattern.test(message)) {
-        formMessage.style.color = 'red';
-        formMessage.textContent = 'Message can only contain letters, numbers, spaces, and . , ! ?';
-    } else {
-        // Valid case
-        setTimeout(() => {
-            formMessage.style.color = 'green';
-            formMessage.textContent = 'Form submitted successfully!';
-            document.getElementById('contactForm').reset();
+  if (!name) {
+    alert("Please enter your name.");
+    e.preventDefault();
+    return;
+  }
 
-            setTimeout(() => {
-                formMessage.textContent = '';
-            }, 10000);
-        }, 1000);
-    }
+  if (!emailRegex.test(email)) {
+    alert("Please enter a valid email that starts with a letter.");
+    e.preventDefault();
+    return;
+  }
+
+  if (!phoneRegex.test(phone)) {
+    alert("Please enter a valid 10-digit phone number starting with 6-9.");
+    e.preventDefault();
+    return;
+  }
+
+  if (!message) {
+    alert("Please enter your message.");
+    e.preventDefault();
+    return;
+  }
 });

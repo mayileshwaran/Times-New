@@ -12,15 +12,14 @@
   --light-blue-bg: #cccfff;
   --overlay-bg: rgba(0, 0, 0, 0.5);
   --form-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-
   --font-main: sans-serif;
-
   --font-xl: 80px;
   --font-lg: 50px;
   --font-md: 40px;
   --font-sm: 20px;
   --font-xs: 12px;
 }
+
 .navbar {
       display: flex;
       justify-content: space-between;
@@ -42,6 +41,13 @@
     .navbar .right {
       position: relative;
     }
+    .right{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
     .navbar .profile-icon {
       font-size: 22px;
       cursor: pointer;
@@ -50,6 +56,7 @@
       display: none;
       position: absolute;
       right: 0;
+      top: 50px;
       background-color: #fff;
       color: #000;
       box-shadow: 0px 2px 8px rgba(0,0,0,0.2);
@@ -70,15 +77,19 @@
     .navbar .right:hover .dropdown {
       display: block;
     }
-    
+    .text{
+      color: var(--text-white);
+    }
 footer{
   display: flex;
+  width: 100%;
   padding: 50px 50px 50px 50px;
   background-color: var(--primary-color);
   color: var(--text-white);
   justify-content: space-around;
   align-items: start;
   flex-wrap: wrap;
+
 }
 
 .foot-1,.foot-2,.foot-3,.foot-4{

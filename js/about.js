@@ -4,10 +4,15 @@ function updateTime() {
   const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
   const day = days[now.getDay()];
 
-  const hours = String(now.getHours()).padStart(2, '0');
+  let hours = now.getHours();
   const minutes = String(now.getMinutes()).padStart(2, '0');
   const seconds = String(now.getSeconds()).padStart(2, '0');
-  const time = `${hours}:${minutes}:${seconds}`;
+
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  hours = hours % 12;
+  hours = hours ? hours : 12; // Convert 0 to 12
+
+  const time = `${String(hours).padStart(2, '0')}:${minutes}:${seconds} ${ampm}`;
 
   const date = now.toLocaleDateString('en-GB', {
     day: '2-digit',
