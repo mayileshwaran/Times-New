@@ -1,6 +1,32 @@
 <?php 
 include('db.php'); 
 include('auth.php'); 
+if (!isset($_SESSION['user_id'])) {
+    // redirect to login or set default name
+    $username = "Guest";
+} else {
+    $user_id = $_SESSION['user_id'];
+
+    $query = "SELECT name FROM users WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $stmt->bind_result($username);
+    $stmt->fetch();
+    $stmt->close();
+}
+?>
+<?php
+$filter = "";
+if (isset($_GET['type'])) {
+    $type = $_GET['type'];
+    $filter = "WHERE type = '$type'";
+} elseif (isset($_GET['brand'])) {
+    $brand = $_GET['brand'];
+    $filter = "WHERE brand = '$brand'";
+}
+
+$sql = "SELECT * FROM products $filter";
 ?>
 <!DOCTYPE html>
 <html>
@@ -19,20 +45,11 @@ include('auth.php');
 <body>
   <div class="navbar">
   <div class="left"><img src="./image/Time’s new.png" alt=""></div>
-  <div class="center">
-    <?php
-      // Adjust according to your URL parameters or logic
-      if (isset($_GET['type'])) {
-          echo htmlspecialchars($_GET['type']) . " Collection";
-      } elseif (isset($_GET['brand'])) {
-          echo htmlspecialchars($_GET['brand']) . " Watches";
-      } else {
-          echo "Our Collection";
-      }
-    ?>
-  </div>
+
+  
   <div class="right">
     <i class="fas fa-user-circle profile-icon"></i>
+      <p class="text" style="color: white;">Hello, <?= htmlspecialchars($username) ?></p>
     <div class="dropdown">
       <a href="./orders.php">orders</a>
       <a href="logout.php">Logout</a>
@@ -41,7 +58,22 @@ include('auth.php');
 </div>
 
 
-<h2>Products</h2>
+  <div class="center">
+    <?php
+    $type = $_GET['type'] ?? '';
+if ($type) {
+   $filter = "WHERE type = '$type'";
+}
+      // Adjust according to your URL parameters or logic
+      if (isset($_GET['type'])) {
+          echo htmlspecialchars($_GET['type']) . " Watches";
+      } elseif (isset($_GET['brand'])) {
+          echo htmlspecialchars($_GET['brand']) . " Watches";
+      } else {
+          echo "Our Watches";
+      }
+    ?>
+  </div>
 
 
 <!-- Product Cards -->
@@ -92,11 +124,15 @@ if ($result->num_rows > 0) {
         
         // Price
         if ($row['discount_percent'] > 0) {
-          echo "<p class='price'><s>₹" . $row['price'] . "</s> ₹" . number_format($discounted, 2) . "</p>";
+            echo "<p class='price'><s>₹" . $row['price'] . "</s> ₹" . number_format($discounted, 2) . "</p>";
         } else {
-          echo "<p class='price'>₹" . $row['price'] . "</p>";
+            echo "<p class='price'>₹" . $row['price'] . "</p>";
         }
-        echo"<div class='btn-buy'>Buy Now</div>";
+
+        // ✅ Show Buy button only for non-admin users
+        if (!isAdmin()) {
+            echo "<div class='btn-buy'>Buy Now</div>";
+        }
 
         // Admin Buttons inside the card
         if (isAdmin()) {
@@ -104,12 +140,12 @@ if ($result->num_rows > 0) {
             echo "<button class='btn' onclick=\"event.stopPropagation(); window.location='update_product.php?id={$row['id']}'\">Edit</button>";
             echo "<button class='btndelete' onclick=\"event.stopPropagation(); confirmDelete('delete_product.php?id={$row['id']}')\">Delete</button>";
             echo "</div>";
-            
         }
 
         echo "</div>"; // End of .product-card
     }
-} else {
+}
+ else {
     echo "<p>No products found.</p>";
 }
 ?>
@@ -142,5 +178,7 @@ if ($result->num_rows > 0) {
   <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
     </footer>
 <script src="./js/prod.js"></script>
+  <script src="./js/nav.js"></script>
+
 </body>
 </html>

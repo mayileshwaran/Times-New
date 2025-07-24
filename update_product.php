@@ -106,6 +106,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button type="submit" class="btn">Update Product</button>
   </form>
 </div>
+  <script src="./js/nav.js"></script>
 
 </body>
 </html>

@@ -8,6 +8,20 @@ if (!isset($_SESSION['user_id'])) {
 
 
 include('db.php');
+if (!isset($_SESSION['user_id'])) {
+    // redirect to login or set default name
+    $username = "Guest";
+} else {
+    $user_id = $_SESSION['user_id'];
+
+    $query = "SELECT name FROM users WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $stmt->bind_result($username);
+    $stmt->fetch();
+    $stmt->close();
+}
 
 if (!isset($_GET['id']) || !isset($_GET['quantity'])) {
     echo "Product ID or Quantity missing.";
@@ -144,6 +158,7 @@ $stmt->bind_param(
   <div class="center">Payment</div>
   <div class="right">
     <i class="fas fa-user-circle profile-icon"></i>
+          <p class="text" style="color: white;">Hello, <?= htmlspecialchars($username) ?></p>
     <div class="dropdown">
       <a href="orders.php">Orders</a>
       <a href="logout.php">Logout</a>
@@ -264,5 +279,7 @@ function showSection(method) {
   <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
   <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
     </footer>
+  <script src="./js/nav.js"></script>
+
 </body>
 </html>

@@ -36,8 +36,8 @@ if (!isAdmin()) die("Access denied");
     </select>
 
     <input name="price" type="number" step="0.01" placeholder="Price (₹)" required>
-    <input name="discount" type="number" value="0" placeholder="Discount %" required>
-    <input name="quantity" type="number" placeholder="Quantity" min="1" required>
+    <input name="discount" type="number" value="0" placeholder="Discount %"max='50' required>
+    <input name="quantity" type="number" placeholder="Quantity" min="1"  required>
 
     <label class="upload-box">
       Upload Image
@@ -71,6 +71,6 @@ if ($_POST) {
     echo "<script>alert(' Product added successfully'); window.location='show.php';</script>";
 }
 ?>
-
+  <script src="./js/nav.js"></script>
 </body>
 </html>

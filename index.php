@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Time's New Index</title>
     <link rel="stylesheet" href="./css/style.css">
+   
+    
     <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
@@ -13,7 +15,24 @@
 <?php
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
+    include('db.php');
+  
 }
+if (!isset($_SESSION['user_id'])) {
+    // redirect to login or set default name
+    $username = "Guest";
+} else {
+    $user_id = $_SESSION['user_id'];
+
+    $query = "SELECT name FROM users WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $stmt->bind_result($username);
+    $stmt->fetch();
+    $stmt->close();
+}
+
 ?>
 <nav>
   <div class="logo">
@@ -24,7 +43,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <label for="nav"> <i class="fa-solid fa-bars"></i></label>
     <input type="checkbox" id="nav">
     <ul>
-      <li><a href="./index.php">HOME</a></li>
+      <li class="active"><a href="./index.php">HOME</a></li>
       <li><a href="./about.php">ABOUT US</a></li>
       <li><a href="./topbrands.php">TOP BRANDS</a></li>
       <li><a href="./contact.php">CONTACT</a></li>
@@ -35,26 +54,13 @@ if (session_status() === PHP_SESSION_NONE) {
     <?php if (isset($_SESSION['user_id'])): ?>
       <div class="dropdown">
         <i class="fa-solid fa-user-circle dropdown-toggle" onclick="toggleDropdown()" style="cursor:pointer;"></i>
+          <p class="text" style="color: white;">Hello, <?= htmlspecialchars($username) ?></p>
         <div class="dropdown-menu" id="dropdownMenu" style="display: none; position: absolute; background: #fff; box-shadow: 0 0 5px rgba(0,0,0,0.2); padding: 10px;">
           <a href="orders.php">Your Orders</a><br>
           <a href="logout.php">Logout</a>
         </div>
+        
       </div>
-      <script>
-        function toggleDropdown() {
-          const menu = document.getElementById('dropdownMenu');
-          menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-        }
-
-        window.onclick = function(event) {
-          if (!event.target.matches('.dropdown-toggle')) {
-            const dropdown = document.getElementById('dropdownMenu');
-            if (dropdown && dropdown.style.display === 'block') {
-              dropdown.style.display = 'none';
-            }
-          }
-        }
-      </script>
     <?php else: ?>
       <a href="login.php" class="login-btn">Login</a>
     <?php endif; ?>
@@ -112,40 +118,57 @@ if (session_status() === PHP_SESSION_NONE) {
 </div>
 
 <h4>Watches Trending Today</h4>
-<div class="ct">
+  <div class="ct">
   <div class="carousel-container">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="./image/smart.png" alt="">
-                <div class="cc">
-                <h2>Smart watch</h2>
-                <p>This stylish smartwatch blends modern tech with sleek design, offering fitness tracking,
-                     notifications, and more. Perfect for staying connected and active on the go.</p>
-                     <div class="pri-but">Buy Now</div></div>
-            </div>
-            <div class="carousel-item active">
-               <img src="./image/kids.png" alt="">
-               <div class="cc">
-               <h2>Kids Watch</h2>
-               <p>This stylish smartwatch blends modern tech with sleek design, offering fitness tracking, 
-                notifications, and more. Perfect for staying connected and active on the go.</p> <div class="pri-but">Buy Now</div></div>
-            </div>
-            <div class="carousel-item">
-                <img src="./image/couple.png" alt="">
-                <div class="cc">
-                <h2>couple Watch</h2>
-                <p>Elegant and timeless, this couple watch set symbolizes love and unity with matching designs.
-                     Perfect for anniversaries, weddings, or everyday wear to cherish your bond.</p> <div class="pri-but">Buy Now</div></div>
-            </div>
-            
-             <div class="carousel-prev-indicator">
-            <i class="fa-solid fa-arrow-left"></i>
+    <div class="carousel-inner">
+
+      <!-- Slide 1: Smart Watch -->
+      <div class="carousel-item active">
+        <img src="./image/smart.png" alt="">
+        <div class="cc">
+          <h2>Smart Watch</h2>
+          <p>This stylish smartwatch blends modern tech with sleek design, offering fitness tracking,
+            notifications, and more. Perfect for staying connected and active on the go.</p>
+          <a href="show.php?type=smart" class="pri-but">Buy Now</a>
         </div>
-        <div class="carousel-next-indicator">
-           <i class="fa-solid fa-arrow-right"></i>
+      </div>
+
+      <!-- Slide 2: Kids Watch -->
+      <div class="carousel-item">
+        <img src="./image/kids.png" alt="">
+        <div class="cc">
+          <h2>Kids Watch</h2>
+          <p>This stylish smartwatch blends modern tech with sleek design, offering fitness tracking,
+            notifications, and more. Perfect for staying connected and active on the go.</p>
+          <a href="show.php?type=kids" class="pri-but">Buy Now</a>
         </div>
+      </div>
+      <!-- Slide 3: Couple Watch -->
+      <div class="carousel-item">
+        <img src="./image/couple.png" alt="">
+        <div class="cc">
+          <h2>Couple Watch</h2>
+          <p>Elegant and timeless, this couple watch set symbolizes love and unity with matching designs.
+            Perfect for anniversaries, weddings, or everyday wear to cherish your bond.</p>
+          <a href="show.php?type=couple" class="pri-but">Buy Now</a>
         </div>
-       
+      </div>
+
+    </div> 
+
+
+    <!-- Controls -->
+    <div class="carousel-prev-indicator">
+      <i class="fa-solid fa-arrow-left"></i>
+    </div>
+    <div class="carousel-next-indicator">
+      <i class="fa-solid fa-arrow-right"></i>
+    </div>
+
+  </div> 
+</div> 
+
+
     </div> </div>
     <h4>Watches prefer for you</h4>
    <div class="types">
@@ -184,8 +207,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="foot-2">
         <ul>
              <li><a href="./index.php" >HOME</a></li>
+             <li><a href="./about.php">ABOUT US</a></li>
              <li><a href="./topbrands.php">TOP BRANDS</a></li>
-             <li><a href="./about.php">ABOUT</a></li>
              <li> <a href="./contact.php">CONTACT</a></li></ul>
     </div>
     <div class="foot-3">
@@ -204,5 +227,22 @@ if (session_status() === PHP_SESSION_NONE) {
     </footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./js/script.js"></script>
+  <script src="./js/nav.js"></script>
+      <script>
+        function toggleDropdown() {
+          const menu = document.getElementById('dropdownMenu');
+          menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropdown-toggle')) {
+            const dropdown = document.getElementById('dropdownMenu');
+            if (dropdown && dropdown.style.display === 'block') {
+              dropdown.style.display = 'none';
+            }
+          }
+        }
+      </script>
+
 </body>
 </html>

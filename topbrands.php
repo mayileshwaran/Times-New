@@ -13,6 +13,21 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
+include('db.php');
+if (!isset($_SESSION['user_id'])) {
+    // redirect to login or set default name
+    $username = "Guest";
+} else {
+    $user_id = $_SESSION['user_id'];
+
+    $query = "SELECT name FROM users WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $stmt->bind_result($username);
+    $stmt->fetch();
+    $stmt->close();
+}
 ?>
 <nav>
   <div class="logo">
@@ -25,7 +40,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <ul>
       <li><a href="./index.php">HOME</a></li>
       <li><a href="./about.php">ABOUT US</a></li>
-      <li><a href="./topbrands.php">TOP BRANDS</a></li>
+      <li class="active"><a href="./topbrands.php">TOP BRANDS</a></li>
       <li><a href="./contact.php">CONTACT</a></li>
     </ul>
   </div>
@@ -34,26 +49,12 @@ if (session_status() === PHP_SESSION_NONE) {
     <?php if (isset($_SESSION['user_id'])): ?>
       <div class="dropdown">
         <i class="fa-solid fa-user-circle dropdown-toggle" onclick="toggleDropdown()" style="cursor:pointer;"></i>
+          <p class="text" style="color: white;">Hello, <?= htmlspecialchars($username) ?></p>
         <div class="dropdown-menu" id="dropdownMenu" style="display: none; position: absolute; background: #fff; box-shadow: 0 0 5px rgba(0,0,0,0.2); padding: 10px;">
           <a href="orders.php">Your Orders</a><br>
           <a href="logout.php">Logout</a>
         </div>
       </div>
-      <script>
-        function toggleDropdown() {
-          const menu = document.getElementById('dropdownMenu');
-          menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
-        }
-
-        window.onclick = function(event) {
-          if (!event.target.matches('.dropdown-toggle')) {
-            const dropdown = document.getElementById('dropdownMenu');
-            if (dropdown && dropdown.style.display === 'block') {
-              dropdown.style.display = 'none';
-            }
-          }
-        }
-      </script>
     <?php else: ?>
       <a href="login.php" class="login-btn">Login</a>
     <?php endif; ?>
@@ -223,8 +224,8 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="foot-2">
         <ul>
              <li><a href="./index.php" >HOME</a></li>
+             <li><a href="./about.php">ABOUT US</a></li>
              <li><a href="./topbrands.php">TOP BRANDS</a></li>
-             <li><a href="./about.php">ABOUT</a></li>
              <li> <a href="./contact.php">CONTACT</a></li></ul>
     </div>
     <div class="foot-3">
@@ -243,5 +244,22 @@ if (session_status() === PHP_SESSION_NONE) {
     </footer>
       <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./js/script.js"></script>
+  <script src="./js/nav.js"></script>
+      <script>
+        function toggleDropdown() {
+          const menu = document.getElementById('dropdownMenu');
+          menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+        }
+
+        window.onclick = function(event) {
+          if (!event.target.matches('.dropdown-toggle')) {
+            const dropdown = document.getElementById('dropdownMenu');
+            if (dropdown && dropdown.style.display === 'block') {
+              dropdown.style.display = 'none';
+            }
+          }
+        }
+      </script>
+
 </body>
 </html>

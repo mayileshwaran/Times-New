@@ -9,6 +9,7 @@ function isAdmin() {
 include("db.php");
 
 
+
 // Sign Up
 if (isset($_POST['signup_btn'])) {
     $name = $_POST['signup_name'];
@@ -43,6 +44,37 @@ if (isset($_POST['login_btn'])) {
         echo "<script>window.location.href='$redirect';</script>";
     } else {
         echo "<script>alert('Invalid credentials'); window.history.back();</script>";
+    }
+}
+?>
+<?php
+
+include('db.php'); // your DB connection
+
+// Example: user submits login form
+if (isset($_POST['email']) && isset($_POST['password'])) {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $query = "SELECT * FROM user WHERE email = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($row = $result->fetch_assoc()) {
+        // Verify password (assuming it's hashed)
+        if (password_verify($password, $row['password'])) {
+            $_SESSION['userid'] = $row['id'];
+            $_SESSION['username'] = $row['username']; // from user table
+            $_SESSION['role'] = $row['role'];         // optional
+            header("Location: index.php");
+            exit;
+        } else {
+            echo "Invalid password.";
+        }
+    } else {
+        echo "User not found.";
     }
 }
 ?>
