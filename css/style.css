@@ -130,10 +130,7 @@ nav ul a{
   color: var(--text-white);
   text-decoration: none;
 }
-nav li.active a{
-  color: black;
-  font-weight: bold;
-}
+
 nav ul{
   display: flex;
   list-style: none;
@@ -415,7 +412,15 @@ form textarea{
   border: 1px solid black;
 }
 .active a{
-  text-decoration-line: underline 1px var(--text-black);
+  padding-bottom: 5px;
+   border-bottom: 3px solid var(--text-white);
+}
+.copy{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px 10px 20px;
 }
 .dropdown{
   display: flex;

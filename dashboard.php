@@ -116,7 +116,34 @@ while ($row = $res_month->fetch_assoc()) {
     <a href="./query.php">Query Page</a>
   </div>
 </div>
-
+  <footer>
+    <div class="foot-1">
+             <img src="./image/Time’s new.png" alt="" width="200px">
+             <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
+                , lifestyle, and innovation.</p>
+    </div>
+    <div class="foot-2">
+        <ul>
+             <li><a href="./index.php" >HOME</a></li>
+             <li><a href="./about.php">ABOUT US</a></li>
+             <li><a href="./topbrands.php">TOP BRANDS</a></li>
+             <li> <a href="./contact.php">CONTACT</a></li></ul>
+    </div>
+    <div class="foot-3">
+        <h3>Coffee with us</h3>
+         <div class="fr"><i class="fa-solid fa-location-dot"></i> <p>Madurai</p></div>
+         <div class="fr"><a href="tel:+91 9876543210" target="_blank"><i class="fa-solid fa-phone"></i> <span> 9876543210</span>
+                    </a></div>
+    </div>
+   <div class="foot-4">
+    <h3>Get into touch</h3>
+    <div class="foot-4a">
+   <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"> <i class="fa-brands fa-square-instagram"></i></a>
+    <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+  <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
+  <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
+    <div class="copy"><p>All rights received 2025</p></div>
+    </footer>
 <!-- Chart.js Script -->
 <script>
 const dailyCtx = document.getElementById('dailyChart').getContext('2d');

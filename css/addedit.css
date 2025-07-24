@@ -23,11 +23,17 @@
 }
 body{
     display: flex;
+    flex-direction: column;
      background: #f0f2f5;
     align-items: center;
     justify-content: center;
 }
-
+.go{
+  width: 100%;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+}
 .form-container{
   margin: auto;
   width: 90%;

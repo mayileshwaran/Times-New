@@ -52,6 +52,13 @@
       font-size: 22px;
       cursor: pointer;
     }
+    .copy{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px 10px 20px;
+}
     .dropdown {
       display: none;
       position: absolute;
@@ -136,6 +143,17 @@ footer{
   gap: 15px;
   align-self: flex-start;
   
+}
+.arrow{
+  padding: 20px;
+  border-radius: 5px;
+}
+.btn-back{
+  background-color: var(--primary-color);
+  color: var(--text-white);
+  padding: 10px;
+  border:none;
+   
 }
 .foot-4a{
   display: flex;

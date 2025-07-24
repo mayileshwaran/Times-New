@@ -225,7 +225,13 @@ label input[type="radio"] {
   transition: 0.3s ease;
 }
 
-
+.go{
+  width: 100%;
+  display: flex;
+  align-items: start;
+  
+  justify-content: start;
+}
   .error { 
     color: red;
      font-size: 14px; 

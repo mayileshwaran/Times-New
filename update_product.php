@@ -54,6 +54,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     echo "<script>alert(' Product updated successfully'); window.location='show.php';</script>";
     exit;
 }
+if (!isset($_SESSION['user_id'])) {
+    // redirect to login or set default name
+    $username = "Guest";
+} else {
+    $user_id = $_SESSION['user_id'];
+
+    $query = "SELECT name FROM users WHERE id = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $user_id);
+    $stmt->execute();
+    $stmt->bind_result($username);
+    $stmt->fetch();
+    $stmt->close();
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -63,10 +78,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="./css/nav.css">
   <link rel="stylesheet" href="./css/addedit.css">
 </head>
 <body>
-
+<div class="navbar">
+  <div class="logo"><img src="./image/Time’s new.png" alt=""></div>
+  <div class="center"><?= htmlspecialchars($product['name']) ?></div>
+  <div class="right">
+    <i class="fas fa-user-circle profile-icon"></i>
+      <p class="text" style="color: white;">Hello, <?= htmlspecialchars($username) ?></p>
+    <div class="dropdown">
+      <a href="orders.php">Orders</a>
+      <a href="logout.php">Logout</a>
+    </div>
+  </div>
+</div>
+<div class="go">
+  <div class="arrow">
+    <button onclick="history.back()" class="btn-back">Go Back <i class="fa-solid fa-circle-arrow-left"></i></button>
+ </div></div>
 <div class="form-container">
   <h2>Update Product</h2>
 
@@ -106,6 +138,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <button type="submit" class="btn">Update Product</button>
   </form>
 </div>
+<footer>
+  <div class="foot-1">
+    <img src="./image/Time’s new.png" alt="" width="200px">
+    <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology, lifestyle, and innovation.</p>
+  </div>
+  <div class="foot-2">
+    <ul>
+      <li><a href="./index.php">HOME</a></li>
+      <li><a href="./topbrands.php">TOP BRANDS</a></li>
+      <li><a href="./about.php">ABOUT</a></li>
+      <li><a href="./contact.php">CONTACT</a></li>
+    </ul>
+  </div>
+  <div class="foot-3">
+    <h3>Coffee with us</h3>
+    <div class="fr"><i class="fa-solid fa-location-dot"></i> <p>Madurai</p></div>
+    <div class="fr"><a href="tel:+91 9876543210" target="_blank"><i class="fa-solid fa-phone"></i> <span>9876543210</span></a></div>
+  </div>
+  <div class="foot-4">
+    <h3>Get into touch</h3>
+    <div class="foot-4a">
+      <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+      <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+      <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
+      <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+    <div class="copy"><p>All rights received 2025</p></div>
+</footer>
   <script src="./js/nav.js"></script>
 
 </body>

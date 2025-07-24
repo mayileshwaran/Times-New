@@ -73,7 +73,7 @@ if (!isset($_SESSION['user_id'])) {
         <h2>NEW & EXCLUSIVE</h2>
         <h1>Watch</h1><p>A sleek and elegant watch crafted for both style and precision. Perfect for everyday wear or special occasions with timeless design.</p>
       <div class="pri-but">
-  <a href="show.php">Buy Now</a>
+  <a href="show.php">Visit More</a>
 </div></div>
      
     </div>
@@ -129,7 +129,7 @@ if (!isset($_SESSION['user_id'])) {
           <h2>Smart Watch</h2>
           <p>This stylish smartwatch blends modern tech with sleek design, offering fitness tracking,
             notifications, and more. Perfect for staying connected and active on the go.</p>
-          <a href="show.php?type=smart" class="pri-but">Buy Now</a>
+          <a href="./show.php?type=smart" class="pri-but">Visit More</a>
         </div>
       </div>
 
@@ -140,7 +140,7 @@ if (!isset($_SESSION['user_id'])) {
           <h2>Kids Watch</h2>
           <p>This stylish smartwatch blends modern tech with sleek design, offering fitness tracking,
             notifications, and more. Perfect for staying connected and active on the go.</p>
-          <a href="show.php?type=kids" class="pri-but">Buy Now</a>
+          <a href="./show.php?type=kids" class="pri-but">Visit More</a>
         </div>
       </div>
       <!-- Slide 3: Couple Watch -->
@@ -150,7 +150,7 @@ if (!isset($_SESSION['user_id'])) {
           <h2>Couple Watch</h2>
           <p>Elegant and timeless, this couple watch set symbolizes love and unity with matching designs.
             Perfect for anniversaries, weddings, or everyday wear to cherish your bond.</p>
-          <a href="show.php?type=couple" class="pri-but">Buy Now</a>
+          <a href="./show.php?type=couple" class="pri-but">Visit More</a>
         </div>
       </div>
 
@@ -224,7 +224,8 @@ if (!isset($_SESSION['user_id'])) {
     <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
   <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
   <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
-    </footer>
+  <div class="copy"><p>All rights received 2025</p></div>
+</footer>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script src="./js/script.js"></script>
   <script src="./js/nav.js"></script>

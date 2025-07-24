@@ -108,6 +108,7 @@ if (!isset($_SESSION['user_id'])) {
     <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
   <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
   <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
+    <div class="copy"><p>All rights received 2025</p></div>
     </footer>
   <script src="./js/about.js"></script>
   <script src="./js/nav.js"></script>

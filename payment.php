@@ -165,7 +165,10 @@ $stmt->bind_param(
     </div>
   </div>
 </div>
-
+ <div class="go">
+  <div class="arrow">
+    <button onclick="history.back()" class="btn-back">Go Back <i class="fa-solid fa-circle-arrow-left"></i></button>
+ </div></div>
 
 <div class="payment-container">
   <h2><?= htmlspecialchars($row['name']) ?> - Checkout</h2>
@@ -278,6 +281,7 @@ function showSection(method) {
     <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
   <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
   <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
+    <div class="copy"><p>All rights received 2025</p></div>
     </footer>
   <script src="./js/nav.js"></script>
 

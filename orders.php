@@ -5,8 +5,7 @@ include 'db.php';
 if (!isset($_SESSION['user_id'])) {
     header('Location: login.php');
     exit();
-}
-if (!isset($_SESSION['user_id'])) {
+}if (!isset($_SESSION['user_id'])) {
     // redirect to login or set default name
     $username = "Guest";
 } else {
@@ -20,6 +19,7 @@ if (!isset($_SESSION['user_id'])) {
     $stmt->fetch();
     $stmt->close();
 }
+
 $user_id = $_SESSION['user_id'];
 
 // Get user role
@@ -70,8 +70,8 @@ $result = $stmt->get_result();
   <title>Your Orders</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/nav.css">
-  <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="./css/order.css">
+  <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 <body>
@@ -80,27 +80,24 @@ $result = $stmt->get_result();
 <div class="navbar">
   <div class="logo"><img src="./image/Time’s new.png" alt=""></div>
   <div class="center"><?= $is_admin ? 'All Orders' : 'Your Orders' ?></div>
-  <div class="user-profile">
-    <?php if (isset($_SESSION['user_id'])): ?>
-      <div class="dropdown">
-        <i class="fa-solid fa-user-circle dropdown-toggle" onclick="toggleDropdown()" style="cursor:pointer;"></i>
-          <p class="text" style="color: white;">Hello, <?= htmlspecialchars($username) ?></p>
-        <div class="dropdown-menu" id="dropdownMenu" style="display: none; position: absolute; background: #fff; box-shadow: 0 0 5px rgba(0,0,0,0.2); padding: 10px;">
-          <a href="orders.php">Your Orders</a><br>
-          <a href="logout.php">Logout</a>
-        </div>
+  <div class="right">
+    <i class="fas fa-user-circle profile-icon"></i>
+    <p class="text" style="color: white;">Hello, <?= htmlspecialchars($username) ?></p>
+    <div class="dropdown">
+      <a href="./index.php">Home</a>
+      <a href="logout.php">Logout
         
+        </a>
       </div>
-    <?php else: ?>
-      <a href="login.php" class="login-btn">Login</a>
-    <?php endif; ?>
+    </div>
   </div>
-</div>
-
-<h2><?= $is_admin ? 'All Orders Placed' : 'Your Orders' ?></h2>
-
-<?php if ($result->num_rows > 0): ?>
-  <div class="order-grid">
+  <div class="arrow">
+    <button onclick="history.back()" class="btn-back">Go Back <i class="fa-solid fa-circle-arrow-left"></i></button>
+ </div>
+  <h2><?= $is_admin ? 'All Orders Placed' : 'Your Orders' ?></h2>
+  
+  <?php if ($result->num_rows > 0): ?>
+    <div class="order-grid">
     <?php while ($row = $result->fetch_assoc()): ?>
       <div class="order-card">
         <img src="uploads/<?= htmlspecialchars($row['image_path']) ?>" alt="<?= htmlspecialchars($row['product_name']) ?>">
@@ -112,15 +109,43 @@ $result = $stmt->get_result();
           <p>Date: <?= date('d M Y, h:i A', strtotime($row['created_at'])) ?></p>
           <?php if ($is_admin): ?>
             <p>User: <?= htmlspecialchars($row['user_name']) ?> (ID: <?= $row['user_id'] ?>)</p>
-          <?php endif; ?>
-        </div>
+            <?php endif; ?>
+          </div>
       </div>
-    <?php endwhile; ?>
-  </div>
+      <?php endwhile; ?>
+    </div>
 <?php else: ?>
   <div class="no-orders">No orders found.</div>
 <?php endif; ?>
-
+<footer>
+  <div class="foot-1">
+    <img src="./image/Time’s new.png" alt="" width="200px">
+    <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology, lifestyle, and innovation.</p>
+  </div>
+  <div class="foot-2">
+    <ul>
+      <li><a href="./index.php">HOME</a></li>
+      <li><a href="./topbrands.php">TOP BRANDS</a></li>
+      <li><a href="./about.php">ABOUT</a></li>
+      <li><a href="./contact.php">CONTACT</a></li>
+    </ul>
+  </div>
+  <div class="foot-3">
+    <h3>Coffee with us</h3>
+    <div class="fr"><i class="fa-solid fa-location-dot"></i> <p>Madurai</p></div>
+    <div class="fr"><a href="tel:+91 9876543210" target="_blank"><i class="fa-solid fa-phone"></i> <span>9876543210</span></a></div>
+  </div>
+  <div class="foot-4">
+    <h3>Get into touch</h3>
+    <div class="foot-4a">
+      <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
+      <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+      <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
+      <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </div>
+    <div class="copy"><p>All rights received 2025</p></div>
+</footer>
 <script src="./js/nav.js"></script>
 </body>
 </html>

@@ -68,7 +68,10 @@ $randoms = $conn->query("SELECT * FROM products WHERE id != $id AND status = 'ac
     </div>
   </div>
 </div>
-
+<div class="go">
+  <div class="arrow">
+    <button onclick="history.back()" class="btn-back">Go Back <i class="fa-solid fa-circle-arrow-left"></i></button>
+ </div></div>
 <div class="view-product-container">
   <div class="main-product">
     <?php if (!empty($product['image_path'])): ?>
@@ -154,6 +157,7 @@ $randoms = $conn->query("SELECT * FROM products WHERE id != $id AND status = 'ac
       <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
     </div>
   </div>
+    <div class="copy"><p>All rights received 2025</p></div>
 </footer>
 <script>
   const quantityInput = document.querySelector('input[name="quantity"]');
