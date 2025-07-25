@@ -25,14 +25,14 @@ button {
   transition: transform 80ms ease-in;
   cursor: pointer;
 }
-.input-wrapper {
+.password-field {
   display: flex;
   position: relative;
   width: 100%;
 }
 
-.input-wrapper input[type="password"],
-.input-wrapper input[type="text"] {
+.password-field input[type="password"],
+.password-field input[type="text"] {
   width: 100%;
   padding: 10px 40px 10px 10px;
   box-sizing: border-box;
