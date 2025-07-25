@@ -11,7 +11,7 @@
 <body>
   <?php
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+      include('user.php'); 
 }
 include('db.php');
 if (!isset($_SESSION['user_id'])) {
@@ -40,6 +40,7 @@ if (!isset($_SESSION['user_id'])) {
     <ul>
       <li><a href="./index.php">HOME</a></li>
       <li><a href="./about.php">ABOUT US</a></li>
+      <li><a href="./products.php">PRODUCTS </a></li>
       <li class="active"><a href="./topbrands.php">TOP BRANDS</a></li>
       <li><a href="./contact.php">CONTACT</a></li>
     </ul>

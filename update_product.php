@@ -2,8 +2,9 @@
 <?php 
 include('db.php'); 
 include('auth.php'); 
-if (!isAdmin()) die("Access denied"); 
-
+if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['admin', 'superadmin'])) {
+    die("Access denied.");
+}
 if (!isset($_GET['id'])) die("Product ID not provided.");
 
 $id = $_GET['id'];
@@ -74,7 +75,7 @@ if (!isset($_SESSION['user_id'])) {
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Update Product</title>
+  <title>Time's New Update Product</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
@@ -97,7 +98,7 @@ if (!isset($_SESSION['user_id'])) {
 </div>
 <div class="go">
   <div class="arrow">
-    <button onclick="history.back()" class="btn-back">Go Back <i class="fa-solid fa-circle-arrow-left"></i></button>
+    <button onclick="history.back()" class="btn-back"><i class="fa-solid fa-circle-arrow-left"></i>Go Back </button>
  </div></div>
 <div class="form-container">
   <h2>Update Product</h2>
@@ -139,34 +140,31 @@ if (!isset($_SESSION['user_id'])) {
   </form>
 </div>
 <footer>
-  <div class="foot-1">
-    <img src="./image/Time’s new.png" alt="" width="200px">
-    <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology, lifestyle, and innovation.</p>
-  </div>
-  <div class="foot-2">
-    <ul>
-      <li><a href="./index.php">HOME</a></li>
-      <li><a href="./topbrands.php">TOP BRANDS</a></li>
-      <li><a href="./about.php">ABOUT</a></li>
-      <li><a href="./contact.php">CONTACT</a></li>
-    </ul>
-  </div>
-  <div class="foot-3">
-    <h3>Coffee with us</h3>
-    <div class="fr"><i class="fa-solid fa-location-dot"></i> <p>Madurai</p></div>
-    <div class="fr"><a href="tel:+91 9876543210" target="_blank"><i class="fa-solid fa-phone"></i> <span>9876543210</span></a></div>
-  </div>
-  <div class="foot-4">
+    <div class="foot-1">
+             <img src="./image/Time’s new.png" alt="" width="200px">
+             <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
+                , lifestyle, and innovation.</p>
+    </div>
+   
+    <div class="foot-3">
+        <h3>Coffee with us</h3>
+         <div class="fr"><i class="fa-solid fa-location-dot"></i> <p>Madurai</p></div>
+         <div class="fr"><a href="tel:+91 9876543210" target="_blank"><i class="fa-solid fa-phone"></i> <span> 9876543210</span>
+                    </a></div>
+    </div>
+   <div class="foot-4">
     <h3>Get into touch</h3>
     <div class="foot-4a">
-      <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"><i class="fa-brands fa-square-instagram"></i></a>
-      <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
-      <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
-      <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+   <a href="https://www.instagram.com/accounts/login/?hl=en" target="_blank"> <i class="fa-brands fa-square-instagram"></i></a>
+    <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
+  <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
+  <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
+     <div class="foot-2">
+      
+          <p>All rights received 2025</p>
     </div>
-  </div>
-    <div class="copy"><p>All rights received 2025</p></div>
-</footer>
+    
+    </footer>
   <script src="./js/nav.js"></script>
 
 </body>

@@ -1,5 +1,5 @@
 <?php
-session_start();
+   include('user.php'); 
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit;
@@ -45,7 +45,7 @@ $randoms = $conn->query("SELECT * FROM products WHERE id != $id AND status = 'ac
 <!DOCTYPE html>
 <html>
 <head>
-  <title><?= htmlspecialchars($product['name']) ?> - Time's New View Product</title>
+  <title> Time's New View Product-<?= htmlspecialchars($product['name']) ?></title>
   <link rel="stylesheet" href="./css/prod.css">
   <link rel="stylesheet" href="./css/nav.css">
   
@@ -70,7 +70,7 @@ $randoms = $conn->query("SELECT * FROM products WHERE id != $id AND status = 'ac
 </div>
 <div class="go">
   <div class="arrow">
-    <button onclick="history.back()" class="btn-back">Go Back <i class="fa-solid fa-circle-arrow-left"></i></button>
+    <button onclick="history.back()" class="btn-back"><i class="fa-solid fa-circle-arrow-left"></i> Go Back </button>
  </div></div>
 <div class="view-product-container">
   <div class="main-product">

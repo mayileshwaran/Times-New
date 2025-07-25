@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2025 at 09:11 AM
+-- Generation Time: Jul 25, 2025 at 05:34 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -48,10 +48,10 @@ CREATE TABLE `orders` (
 
 INSERT INTO `orders` (`id`, `product_id`, `quantity`, `price`, `created_at`, `payment_method`, `fullname`, `address`, `city`, `pincode`, `phone`, `user_id`) VALUES
 (1, 3, 3, 5439.00, '2025-07-09 11:27:28', NULL, NULL, NULL, NULL, NULL, NULL, 1),
-(2, 3, 5, 27195.00, '2025-07-10 11:32:01', NULL, NULL, NULL, NULL, NULL, NULL, 2),
+(2, 3, 5, 5000.00, '2025-07-10 11:32:01', NULL, NULL, NULL, NULL, NULL, NULL, 2),
 (3, 4, 1, 3209.28, '2025-07-11 11:32:10', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (4, 3, 1, 5439.00, '2025-07-12 11:36:45', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(5, 15, 7, 37730.00, '2025-07-13 12:27:55', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 15, 7, 1000.00, '2025-07-13 12:27:55', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (6, 15, 1, 5390.00, '2025-07-14 12:30:39', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (7, 15, 2, 10780.00, '2025-07-14 12:44:55', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
 (8, 1, 1, 5225.00, '2025-07-16 10:19:39', NULL, NULL, NULL, NULL, NULL, NULL, NULL),
@@ -80,7 +80,8 @@ INSERT INTO `orders` (`id`, `product_id`, `quantity`, `price`, `created_at`, `pa
 (31, NULL, 1, NULL, '2025-07-18 19:54:52', 'Cash on Delivery', 'Mayileshwaran', '1-8-17/13, West kottai cross Street, Paravai', 'Madurai', '625402', '9677929212', 2),
 (32, NULL, 1, NULL, '2025-07-18 20:10:18', 'upi', 'Mayileshwaran', '1-8-17/13, West kottai cross Street, Paravai', 'Madurai', '625402', '9677929212', 2),
 (33, 0, 1, 5280.00, '2025-07-18 20:21:25', 'Cash on Delivery', 'Mayileshwaran', '1-8-17/13, West kottai cross Street, Paravai', 'Madurai', '625402', '9677929212', 2),
-(34, 0, 2, 5280.00, '2025-07-23 10:58:17', 'Cash on Delivery', 'Mayileshwaran', '1-8-17/13, West kottai cross Street, Paravai', 'Madurai', '625402', '9677929212', 1);
+(34, 0, 2, 5280.00, '2025-07-23 10:58:17', 'Cash on Delivery', 'Mayileshwaran', '1-8-17/13, West kottai cross Street, Paravai', 'Madurai', '625402', '9677929212', 1),
+(35, 25, 1, 4500.00, '2025-07-24 14:53:19', 'Cash on Delivery', 'Mayileshwaran', '1-8-17/13, West kottai cross Street, Paravai', 'Madurai', '625402', '9677929212', 2);
 
 -- --------------------------------------------------------
 
@@ -110,12 +111,12 @@ INSERT INTO `products` (`id`, `name`, `price`, `discount_percent`, `type`, `bran
 (17, 'brishless watch', 777.00, 1, 'womens', 'rolex', NULL, 43, 'active'),
 (18, 'Kids stylish watch ', 7000.00, 0, 'kids', 'rolex', '687a10065da5a.png', 54, 'active'),
 (19, 'Seamaster Diver 300M', 637200.00, 20, 'boys', 'omega', '688097d213a2e.avif', 10, 'active'),
-(20, 'Rolex Smart Watch', 7500.00, 35, 'smart', 'rolex', '6881cf64b3a62.webp', 55, 'active'),
+(20, 'Rolex Trending Smart Watch', 7500.00, 35, 'smart', 'rolex', '6881cf64b3a62.webp', 55, 'active'),
 (21, 'Golden Stainless Steel  Couple Watch', 2000.00, 10, 'couple', 'rolex', '6881d051536d9.webp', 100, 'active'),
 (22, ' Round Dial Wrist Watch', 1500.00, 10, 'boys', 'rolex', '6881d0d89edca.webp', 55, 'inactive'),
 (23, ' Constellation Men\'s Watch', 20000.00, 45, 'mens', 'omega', '6881d1c0eddaf.jpeg', 68, 'active'),
 (24, 'Rose Gold Party Wear Watch', 12000.00, 10, 'womens', 'omega', '6881d25dc72dd.png', 88, 'active'),
-(25, ' AeoFit , Fitness & Sports watch', 4500.00, 0, 'smart', 'omega', '6881d2c2ce5ba.jpg', 53, 'active'),
+(25, ' AeoFit , Fitness & Sports watch', 4500.00, 0, 'smart', 'omega', '6881d2c2ce5ba.jpg', 52, 'active'),
 (26, 'Round Luxury(Premium)', 6000.00, 20, 'boys', 'omega', '6881d40a99a24.jpeg', 75, 'active'),
 (27, 'STAINLESS STEEL BRACELET WATCH', 20000.00, 1, 'mens', 'citizen', '6881d4b5d9835.webp', 100, 'active'),
 (28, 'CITIZEN QUARTZ  WHITE DIAL', 12900.00, 20, 'womens', 'citizen', '6881d564ad847.png', 50, 'active'),
@@ -129,7 +130,8 @@ INSERT INTO `products` (`id`, `name`, `price`, `discount_percent`, `type`, `bran
 (36, 'Astro Kids Blue Digital  Strap', 3630.00, 50, 'kids', 'cartier', '6881d9bb2ba4a.webp', 43, 'active'),
 (37, 'BALLON BLEU DE , LEATHER', 100000.00, 30, 'boys', 'cartier', '6881da287b975.webp', 44, 'active'),
 (38, 'Omega  Couple Watch', 15000.00, 20, 'couple', 'omega', '6881db90f197e.jpg', 55, 'active'),
-(39, 'Night Watch', 4318.00, 0, 'kids', 'citizen', '6881dc0d7228a.avif', 150, 'active');
+(39, 'Night Kids Toy Watch', 4318.00, 0, 'kids', 'citizen', '6881dc0d7228a.avif', 150, 'active'),
+(40, 'My watch', 150000.00, 10, 'mens', 'rolex', '6883653bcf6a9.webp', 10, 'active');
 
 -- --------------------------------------------------------
 
@@ -165,19 +167,24 @@ CREATE TABLE `users` (
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
-  `role` enum('admin','user') DEFAULT 'user'
+  `role` enum('superadmin','admin','user') NOT NULL DEFAULT 'user',
+  `status` varchar(10) DEFAULT 'active'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`) VALUES
-(1, 'admin', 'admin@gmail.com', 'admin123', 'admin'),
-(2, 'mayileshwaran', 'mayileshwaran2005@gmail.com', 'mayilesh03', 'user'),
-(3, 'Test', 'test@gmail.com', 'test123', 'user'),
-(6, 'test', 'tester@gmail.com', 'test123', 'user'),
-(7, 'mayil', 'mayil@gmail.com', '123456', 'user');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `role`, `status`) VALUES
+(1, 'admin', 'admin@gmail.com', 'admin123', 'superadmin', 'active'),
+(2, 'mayileshwaran', 'mayileshwaran2005@gmail.com', 'mayilesh03', 'user', 'active'),
+(3, 'Test', 'test@gmail.com', 'test123', 'user', 'active'),
+(6, 'test', 'tester@gmail.com', 'test123', 'user', 'active'),
+(7, 'mayil', 'mayil@gmail.com', '123456', 'user', 'active'),
+(8, 'Sakthi', 'sakthi@gmail.com', '123456', 'user', 'active'),
+(9, 'arjun', 'arjun@gmail.com', 'arjun123', 'admin', 'active'),
+(12, 'vijay', 'vijay@gmail.com', 'vijay123', 'admin', 'active'),
+(13, 'ajith', 'ajith@gmail.com', '123456', 'user', 'active');
 
 --
 -- Indexes for dumped tables
@@ -217,13 +224,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `query`
@@ -235,7 +242,7 @@ ALTER TABLE `query`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

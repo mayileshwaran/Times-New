@@ -1,5 +1,5 @@
 <?php
-session_start();
+   include('user.php'); 
 if (!isset($_SESSION['user_id'])) {
   echo "User ID: " . $_SESSION['user_id'];
     exit;
@@ -150,7 +150,7 @@ $stmt->bind_param(
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
-  <title>Payment</title>
+  <title>Time's New Payment</title>
 </head>
 <body>
 <div class="navbar">
@@ -167,7 +167,7 @@ $stmt->bind_param(
 </div>
  <div class="go">
   <div class="arrow">
-    <button onclick="history.back()" class="btn-back">Go Back <i class="fa-solid fa-circle-arrow-left"></i></button>
+    <button onclick="history.back()" class="btn-back"><i class="fa-solid fa-circle-arrow-left"></i> Go Back </button>
  </div></div>
 
 <div class="payment-container">

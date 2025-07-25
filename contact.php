@@ -49,7 +49,7 @@ if ($message === '') {
         $name = $email = $phone = $message = ''; // Clear form values
     }
 }
-session_start();
+   include('user.php'); 
 include('db.php');
 if (!isset($_SESSION['user_id'])) {
     // redirect to login or set default name
@@ -100,7 +100,7 @@ form .success-box {
 <body>
   <?php
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+
 }
 ?>
 <nav>
@@ -114,6 +114,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <ul>
       <li><a href="./index.php">HOME</a></li>
       <li><a href="./about.php">ABOUT US</a></li>
+      <li><a href="./products.php">PRODUCTS </a></li>
       <li><a href="./topbrands.php">TOP BRANDS</a></li>
       <li class="active"><a href="./contact.php">CONTACT</a></li>
     </ul>

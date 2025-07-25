@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login & Signup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Time's New Login & Signup</title>
   <link rel="stylesheet" href="./css/log.css" />
-    <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
+  <link rel="shortcut icon" href="./image/favicon.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
 </head>
 <body>
   <div class="container" id="container">
@@ -15,26 +16,31 @@
         <h2>Create Account</h2>
         <input type="text" name="signup_name" placeholder="Name" required />
         <input type="email" name="signup_email" placeholder="Email" required />
-        <input type="password" name="signup_password" placeholder="Password" required />
+        <div class="input-wrapper">
+  <input type="password" id="login_password" name="login_password" placeholder="Password" required />
+  <i class="fa fa-eye toggle-password" onclick="togglePassword(this, 'login_password')"></i>
+</div>
         <button name="signup_btn" type="submit">Sign Up</button>
       </form>
     </div>
 
     <!-- Login -->
-   <div class="form-container sign-in-container">
-  <form id="loginForm" method="POST" action="auth.php" onsubmit="return validateLoginForm()">
-    <h2>Login</h2>
+    <div class="form-container sign-in-container">
+      <form id="loginForm" method="POST" action="auth.php" onsubmit="return validateLoginForm()">
+        <h2>Login</h2>
+        <input type="email" id="login_email" name="login_email" placeholder="Email" required />
+        <div id="emailError" class="error-message"></div>
 
-    <input type="email" id="login_email" name="login_email" placeholder="Email" />
-    <div id="emailError" class="error-message"></div>
-
-    <input type="password" id="login_password" name="login_password" placeholder="Password" />
-    <div id="passwordError" class="error-message"></div>
-
-    <button name="login_btn" type="submit">Login</button>
-  </form>
+       <div class="input-wrapper" >
+  <input type="password" id="signup_password" name="signup_password" placeholder="Password" required />
+  <i class="fa fa-eye toggle-password" onclick="togglePassword(this, 'signup_password')"></i>
 </div>
 
+        <div id="passwordError" class="error-message"></div>
+
+        <button name="login_btn" type="submit">Login</button>
+      </form>
+    </div>
 
     <!-- Overlay -->
     <div class="overlay-container">
@@ -52,7 +58,6 @@
       </div>
     </div>
   </div>
-
- <script src="./js/login.js"></script>
+<script src="./js/login.js"></script>
 </body>
 </html>

@@ -14,7 +14,7 @@
 
 <?php
 if (session_status() === PHP_SESSION_NONE) {
-    session_start();
+    include('user.php');
     include('db.php');
   
 }
@@ -45,6 +45,7 @@ if (!isset($_SESSION['user_id'])) {
     <ul>
       <li class="active"><a href="./index.php">HOME</a></li>
       <li><a href="./about.php">ABOUT US</a></li>
+      <li><a href="./products.php">PRODUCTS </a></li>
       <li><a href="./topbrands.php">TOP BRANDS</a></li>
       <li><a href="./contact.php">CONTACT</a></li>
     </ul>
@@ -73,7 +74,7 @@ if (!isset($_SESSION['user_id'])) {
         <h2>NEW & EXCLUSIVE</h2>
         <h1>Watch</h1><p>A sleek and elegant watch crafted for both style and precision. Perfect for everyday wear or special occasions with timeless design.</p>
       <div class="pri-but">
-  <a href="show.php">Visit More</a>
+  <a href="./products.php">View Products</a>
 </div></div>
      
     </div>
@@ -129,7 +130,7 @@ if (!isset($_SESSION['user_id'])) {
           <h2>Smart Watch</h2>
           <p>This stylish smartwatch blends modern tech with sleek design, offering fitness tracking,
             notifications, and more. Perfect for staying connected and active on the go.</p>
-          <a href="./show.php?type=smart" class="pri-but">Visit More</a>
+          <a href="././products.php" class="pri-but">View Products</a>
         </div>
       </div>
 
@@ -140,7 +141,7 @@ if (!isset($_SESSION['user_id'])) {
           <h2>Kids Watch</h2>
           <p>This stylish smartwatch blends modern tech with sleek design, offering fitness tracking,
             notifications, and more. Perfect for staying connected and active on the go.</p>
-          <a href="./show.php?type=kids" class="pri-but">Visit More</a>
+          <a href="././products.php" class="pri-but">View Products</a>
         </div>
       </div>
       <!-- Slide 3: Couple Watch -->
@@ -150,7 +151,7 @@ if (!isset($_SESSION['user_id'])) {
           <h2>Couple Watch</h2>
           <p>Elegant and timeless, this couple watch set symbolizes love and unity with matching designs.
             Perfect for anniversaries, weddings, or everyday wear to cherish your bond.</p>
-          <a href="./show.php?type=couple" class="pri-but">Visit More</a>
+          <a href="././products.php" class="pri-but">View Products</a>
         </div>
       </div>
 
@@ -172,27 +173,27 @@ if (!isset($_SESSION['user_id'])) {
     </div> </div>
     <h4>Watches prefer for you</h4>
    <div class="types">
-    <a href="show.php?type=mens" class="type">
+    <a href="./products.php?type=mens" class="type">
         <img src="./image/image.png" alt="Mens Watch">
         <h2>Mens Watch</h2>
     </a>
-    <a href="show.php?type=womens" class="type">
+    <a href="./products.php?type=womens" class="type">
         <img src="./image/image 66.png" alt="Womens Watch">
         <h2>Womans Watch</h2>
     </a>
-    <a href="show.php?type=smart" class="type">
+    <a href="./products.php?type=smart" class="type">
         <img src="./image/image 67.png" alt="Smart Watch">
         <h2>Smart Watches</h2>
     </a>
-    <a href="show.php?type=couple" class="type">
+    <a href="./products.php?type=couple" class="type">
         <img src="./image/image 68.png" alt="Couple Watch">
         <h2>Couple Watches</h2>
     </a>
-    <a href="show.php?type=kids" class="type">
+    <a href="./products.php?type=kids" class="type">
         <img src="./image/image 69.png" alt="Kids Watch">
         <h2>Kids Watches</h2>
     </a>
-    <a href="show.php?type=boys" class="type">
+    <a href="./products.php?type=boys" class="type">
         <img src="./image/image 70.png" alt="Boys Watch">
         <h2>Boys Watch</h2>
     </a>

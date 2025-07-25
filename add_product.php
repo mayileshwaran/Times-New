@@ -1,7 +1,9 @@
 <?php 
 include('auth.php'); 
 include('db.php'); 
-if (!isAdmin()) die("Access denied"); 
+if (!isset($_SESSION['role']) || !in_array($_SESSION['role'], ['admin', 'superadmin'])) {
+    die("Access denied.");
+}
 if (!isset($_SESSION['user_id'])) {
     // redirect to login or set default name
     $username = "Guest";
@@ -34,7 +36,7 @@ if (!isset($_SESSION['user_id'])) {
 <body>
 <div class="navbar">
   <div class="logo"><img src="./image/Time’s new.png" alt=""></div>
-  <div class="center">Add Product</div>
+  <div class="center">Time's New Add Product</div>
   <div class="right">
     <i class="fas fa-user-circle profile-icon"></i>
           <p class="text" style="color: white;">Hello, <?= htmlspecialchars($username) ?></p>
@@ -46,7 +48,7 @@ if (!isset($_SESSION['user_id'])) {
 </div>
 <div class="go">
   <div class="arrow">
-    <button onclick="history.back()" class="btn-back">Go Back <i class="fa-solid fa-circle-arrow-left"></i></button>
+    <button onclick="history.back()" class="btn-back"><i class="fa-solid fa-circle-arrow-left"></i> Go Back </button>
  </div></div>
 <div class="form-container">
   <h2>Add New Product</h2>
@@ -104,19 +106,13 @@ if ($_POST) {
     echo "<script>alert(' Product added successfully'); window.location='show.php';</script>";
 }
 ?>
-   <footer>
+ <footer>
     <div class="foot-1">
              <img src="./image/Time’s new.png" alt="" width="200px">
              <p>Times New is a modern platform delivering fresh insights, trends, and updates across technology
                 , lifestyle, and innovation.</p>
     </div>
-    <div class="foot-2">
-        <ul>
-             <li><a href="./index.php" >HOME</a></li>
-             <li><a href="./about.php">ABOUT US</a></li>
-             <li><a href="./topbrands.php">TOP BRANDS</a></li>
-             <li> <a href="./contact.php">CONTACT</a></li></ul>
-    </div>
+   
     <div class="foot-3">
         <h3>Coffee with us</h3>
          <div class="fr"><i class="fa-solid fa-location-dot"></i> <p>Madurai</p></div>
@@ -130,8 +126,12 @@ if ($_POST) {
     <a href="https://www.facebook.com/login/" target="_blank"><i class="fa-brands fa-square-facebook"></i></a>
   <a href="https://x.com/i/flow/login" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
   <a href="https://www.youtube.com/" target="_blank"><i class="fa-brands fa-youtube"></i></a></div></div>
-  <div class="copy"><p>All rights received 2025</p></div>
-</footer>
+     <div class="foot-2">
+      
+          <p>All rights received 2025</p>
+    </div>
+    
+    </footer>
   <script src="./js/nav.js"></script>
 </body>
 </html>

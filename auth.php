@@ -40,7 +40,7 @@ if (isset($_POST['login_btn'])) {
         $_SESSION['user_id'] = $row['id'];
         $_SESSION['role'] = $row['role'];
         $_SESSION['name'] = $row['name'];
-        $redirect = $row['role'] === 'admin' ? "dashboard.php" : "index.php";
+       $redirect = in_array($row['role'], ['admin', 'superadmin']) ? "dashboard.php" : "index.php";
         echo "<script>window.location.href='$redirect';</script>";
     } else {
         echo "<script>alert('Invalid credentials'); window.history.back();</script>";
