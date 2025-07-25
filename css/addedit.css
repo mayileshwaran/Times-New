@@ -69,6 +69,7 @@ form select {
     color: var(--text-white);
     padding: 10px;
     border: none;
+    cursor: pointer;
     border-radius: 10px;
 }
 @media only screen and (max-width:768px){

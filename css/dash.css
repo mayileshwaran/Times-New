@@ -1,6 +1,7 @@
 /* General Reset */
 * {
   margin: 0;
+  font-family: sans-serif;
   padding: 0;
   box-sizing: border-box;
 }
@@ -80,9 +81,10 @@
 
 /* Dashboard container */
 .dashboard-container {
-  padding: 30px 20px;
+  padding: 50px 20px;
   max-width: 1200px;
   margin: auto;
+  min-height: 75vh;
 }
 
 /* Headings */
@@ -187,4 +189,5 @@ flex-direction: column; }
   .navbar .center {
     font-size: 1.2rem;
   }
+  
 }

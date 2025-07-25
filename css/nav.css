@@ -149,6 +149,7 @@ footer{
   border-radius: 5px;
 }
 .btn-back{
+  cursor: pointer;
   background-color: var(--primary-color);
   color: var(--text-white);
   padding: 10px;
@@ -199,3 +200,8 @@ footer{
     width: 120px;
   }
 }
+  /* @media (min-width: 1555px) {
+        footer{
+            position: fixed;
+            bottom: 0px;
+        }} */

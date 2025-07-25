@@ -57,7 +57,6 @@ $(document).ready(function(){
 
 })
 $(document).ready(function () {
-  // Set a specific future date (e.g., 2025-12-31 23:59:59)
   const future = new Date("2025-08-31T23:59:59");
 
   function updateCountdown() {

@@ -25,6 +25,28 @@ button {
   transition: transform 80ms ease-in;
   cursor: pointer;
 }
+.input-wrapper {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+.input-wrapper input[type="password"],
+.input-wrapper input[type="text"] {
+  width: 100%;
+  padding: 10px 40px 10px 10px;
+  box-sizing: border-box;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #888;
+  cursor: pointer;
+  font-size: 18px;
+}
 
 button:active { transform: scale(0.95); }
 input {
