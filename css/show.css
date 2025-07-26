@@ -89,7 +89,7 @@ h2{
   text-decoration: none;
 }
 .product-card i{
-font-size: 50px;
+font-size: 20px;
     color: black;
 display: flex;
      align-self:center;
@@ -202,6 +202,9 @@ display: flex;
       padding: 10px;
       cursor: pointer;
       border: none;
+      display: flex;align-items: center;
+      justify-content: center;
+      gap: 5px;
      }
 @media only screen and (max-width:550px){
   .product-card{
