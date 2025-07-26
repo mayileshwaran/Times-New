@@ -82,12 +82,12 @@ if ($type) {
 <!-- Product Cards -->
 <div class="product-grid">
   <?php if (in_array($_SESSION['role'], ['admin', 'superadmin'])): ?>
+    <form action="add_product.php" method="get">
     <div class="product-card">
-      <i class="bi bi-plus-lg"></i>
-      <form action="add_product.php" method="get">
-        <button type="submit" class="btn-add">Add New Product</button>
-      </form>
-    </div>
+     
+        <button type="submit" class="btn-add"> <i class="bi bi-plus-lg"></i> Add New Product</button>
+      </div>
+    </form>
   <?php endif; ?>
 
 

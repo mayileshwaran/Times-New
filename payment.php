@@ -4,9 +4,6 @@ if (!isset($_SESSION['user_id'])) {
   echo "User ID: " . $_SESSION['user_id'];
     exit;
 }
-
-
-
 include('db.php');
 if (!isset($_SESSION['user_id'])) {
     // redirect to login or set default name
@@ -133,7 +130,7 @@ $stmt->bind_param(
 
         echo "<script>
           alert('Your order is placed!\\nDelivery expected between $start and $end.');
-          window.location.href = 'show.php';
+          window.location.href = './products.php';
         </script>";
         exit;
     }
@@ -264,8 +261,9 @@ function showSection(method) {
     <div class="foot-2">
         <ul>
              <li><a href="./index.php" >HOME</a></li>
-             <li><a href="./topbrands.php">TOP BRANDS</a></li>
              <li><a href="./about.php">ABOUT</a></li>
+             <li><a href="./products.php">PRODUCTS</a></li>
+             <li><a href="./topbrands.php">TOP BRANDS</a></li>
              <li> <a href="./contact.php">CONTACT</a></li></ul>
     </div>
     <div class="foot-3">

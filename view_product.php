@@ -138,8 +138,9 @@ $randoms = $conn->query("SELECT * FROM products WHERE id != $id AND status = 'ac
   <div class="foot-2">
     <ul>
       <li><a href="./index.php">HOME</a></li>
-      <li><a href="./topbrands.php">TOP BRANDS</a></li>
       <li><a href="./about.php">ABOUT</a></li>
+      <li><a href="./products.php">PRODUCTS</a></li>
+      <li><a href="./topbrands.php">TOP BRANDS</a></li>
       <li><a href="./contact.php">CONTACT</a></li>
     </ul>
   </div>

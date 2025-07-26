@@ -114,7 +114,7 @@ while ($row = $res_month->fetch_assoc()) {
   <!-- Navigation Buttons -->
   <div class="btn-box">
     <a href="./products-admin.php">View Products</a>
-    <a href="./orders-admin.php">Order History</a>
+    <a href="./orders.php">Order History</a>
     <a href="./query.php">Query Page</a>
     <a href="./manage_users.php">Manage User</a>
   </div>

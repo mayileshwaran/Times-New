@@ -57,7 +57,7 @@ $sql = "SELECT * FROM products $filter";
       <li><a href="./index.php">HOME</a></li>
       <li><a href="./about.php">ABOUT US</a></li>
       <li class="active"><a href="./products.php">PRODUCTS </a></li>
-      <li a href="./topbrands.php">TOP BRANDS</a></li>
+       <li><a href="./topbrands.php">TOP BRANDS</a></li>
       <li><a href="./contact.php">CONTACT</a></li>
     </ul>
   </div>
@@ -77,9 +77,7 @@ $sql = "SELECT * FROM products $filter";
     <?php endif; ?>
   </div>
 </nav>
-  <div class="arrow">
-    <button onclick="history.back()" class="btn-back"> <i class="fa-solid fa-circle-arrow-left"></i> Go Back </button>
- </div>
+  
 
   <div class="center">
     <?php

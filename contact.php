@@ -255,8 +255,10 @@ if (session_status() === PHP_SESSION_NONE) {
         <ul>
              <li><a href="./index.php" >HOME</a></li>
              <li><a href="./about.php">ABOUT US</a></li>
-             <li> <a href="./contact.php">CONTACT</a></li></ul>
+             <li><a href="./products.php">PRODUCTS</a></li>
              <li><a href="./topbrands.php">TOP BRANDS</a></li>
+             <li> <a href="./contact.php">CONTACT</a></li>
+             </ul>
     </div>
     <div class="foot-3">
         <h3>Coffee with us</h3>

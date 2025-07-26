@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("sdsssisi", $name, $price, $discount, $type, $brand, $quantity, $imagePath, $id);
     $stmt->execute();
 
-    echo "<script>alert(' Product updated successfully'); window.location='show.php';</script>";
+    echo "<script>alert(' Product updated successfully'); window.location='./products-admin.php';</script>";
     exit;
 }
 if (!isset($_SESSION['user_id'])) {

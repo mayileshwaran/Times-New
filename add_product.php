@@ -71,7 +71,7 @@ if (!isset($_SESSION['user_id'])) {
     </select>
 
     <input name="price" type="number" step="0.01" placeholder="Price (₹)" required>
-    <input name="discount" type="number" value="0" placeholder="Discount %"max='50' required>
+    <input name="discount" type="number" placeholder="Discount %"max='50' required>
     <input name="quantity" type="number" placeholder="Quantity" min="1"  required>
 
     <label class="upload-box">
@@ -103,7 +103,7 @@ if ($_POST) {
     $stmt->bind_param("sssdiis", $name, $type, $brand, $price, $discount, $quantity, $imagePath);
     $stmt->execute();
 
-    echo "<script>alert(' Product added successfully'); window.location='show.php';</script>";
+    echo "<script>alert(' Product added successfully'); window.location='./products-admin.php';</script>";
 }
 ?>
  <footer>

@@ -9,6 +9,24 @@ if (!isset($_SESSION['user_id']) || $_SESSION['role'] !== 'superadmin') {
 
 $errors = [];
 $success = "";
+$no=1;
+
+$users = [];
+
+if (isset($_GET['role']) && in_array($_GET['role'], ['user', 'admin'])) {
+    $selected_role = $_GET['role'];
+    $stmt = $conn->prepare("SELECT * FROM users WHERE status='active' AND role = ?");
+    $stmt->bind_param("s", $selected_role);
+} else {
+    $stmt = $conn->prepare("SELECT * FROM users WHERE status='active' AND role IN ('user', 'admin')");
+}
+
+$stmt->execute();
+$result = $stmt->get_result();
+
+while ($row = $result->fetch_assoc()) {
+    $users[] = $row;
+}
 
 // Handle Add / Update
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
@@ -57,10 +75,21 @@ if (isset($_GET['delete'])) {
 
 // Fetch active users
 $users = [];
-$result = $conn->query("SELECT * FROM users WHERE status='active' AND role != 'superadmin'");
+
+if (isset($_GET['role']) && in_array($_GET['role'], ['user', 'admin'])) {
+    $selected_role = $_GET['role'];
+    $stmt = $conn->prepare("SELECT * FROM users WHERE status='active' AND role = ?");
+    $stmt->bind_param("s", $selected_role);
+} else {
+    $stmt = $conn->prepare("SELECT * FROM users WHERE status='active' AND role IN ('user', 'admin')");
+}
+
+$stmt->execute();
+$result = $stmt->get_result();
 while ($row = $result->fetch_assoc()) {
     $users[] = $row;
 }
+
 
 // Fetch user for edit
 $edit_user = null;
@@ -145,18 +174,30 @@ if (!isset($_SESSION['user_id'])) {
         <button type="submit"><?= $edit_user ? "Update" : "Add" ?> User</button>
     </form>
 </div>
+<div class="filter">
+    <!-- Filter Form -->
+<form method="GET" style="margin: 10px 0;">
+    <label for="role">Filter by Role:</label>
+    <select name="role" id="role" onchange="this.form.submit()">
+        <option value="">-- All --</option>
+        <option value="user" <?= (isset($_GET['role']) && $_GET['role'] === 'user') ? 'selected' : '' ?>>User</option>
+        <option value="admin" <?= (isset($_GET['role']) && $_GET['role'] === 'admin') ? 'selected' : '' ?>>Admin</option>
+    </select>
+</form>
 
+</div>
 <h2>Active Users</h2>
 <div class="table">
 <table>
     <thead>
         <tr>
-            <th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Action</th>
+           <th>NO.</th> <th>ID</th><th>Name</th><th>Email</th><th>Role</th><th>Action</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($users as $u): ?>
             <tr>
+                 <td data-label="No."><?= $no++ ?></td>
                 <td data-label="ID"><?= $u['id'] ?></td>
                 <td data-label="Name"><?= htmlspecialchars($u['name']) ?></td>
                 <td data-label="Email"><?= htmlspecialchars($u['email']) ?></td>

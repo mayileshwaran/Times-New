@@ -1,9 +1,11 @@
 <?php
 include('db.php');
 include('auth.php');
-if (!isAdmin()) die("Access denied");
+if ($_SESSION['role'] !== 'admin' && $_SESSION['role'] !== 'superadmin') {
+    die("Access denied");
+}
 $id = (int) $_GET['id']; 
 $conn->query("UPDATE products SET status = 'inactive' WHERE id = $id");
-header("Location: show.php");
+header("Location: products-admin.php");
 exit;
 ?>

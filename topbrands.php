@@ -89,7 +89,7 @@ if (!isset($_SESSION['user_id'])) {
                 
             </div>
             </div>
-            <a href="show.php?brand=rolex">
+            <a href="products.php?brand=rolex">
             <div class="pri-but">Explore Rolex watch</div></a>
         </div>
     </div>
@@ -119,7 +119,7 @@ if (!isset($_SESSION['user_id'])) {
                 
             </div>
             </div>
-      <a href="show.php?brand=omega">
+      <a href="products.php?brand=omega">
             <div class="pri-but">Explore Omega watch</div></a>
         </div>
     </div>
@@ -149,7 +149,7 @@ if (!isset($_SESSION['user_id'])) {
                 
             </div>
             </div>
-        <a href="show.php?brand=cartier">
+        <a href="products.php?brand=cartier">
             <div class="pri-but">Explore Cartier watch</div></a>
         </div>
     </div>
@@ -180,7 +180,7 @@ if (!isset($_SESSION['user_id'])) {
             </div>
             
             </div>
-            <a href="show.php?brand=citizen">
+            <a href="products.php?brand=citizen">
             <div class="pri-but">Explore Citizen watch</div></a>
         </div>
     </div>
@@ -223,11 +223,13 @@ if (!isset($_SESSION['user_id'])) {
                 , lifestyle, and innovation.</p>
     </div>
     <div class="foot-2">
-        <ul>
+          <ul>
              <li><a href="./index.php" >HOME</a></li>
              <li><a href="./about.php">ABOUT US</a></li>
+             <li><a href="./products.php">PRODUCTS</a></li>
              <li><a href="./topbrands.php">TOP BRANDS</a></li>
-             <li> <a href="./contact.php">CONTACT</a></li></ul>
+             <li> <a href="./contact.php">CONTACT</a></li>
+             </ul>
     </div>
     <div class="foot-3">
         <h3>Coffee with us</h3>
